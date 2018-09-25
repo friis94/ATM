@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface ISeperation
+    public interface ISeperation
     {
+        IVehicle VehicleA { get; set; }
+        IVehicle VehicleB { get; set; }
+        DateTime TimeStamp { get; set; }
     }
 }

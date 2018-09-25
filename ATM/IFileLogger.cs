@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface IFileLogger
+    public interface IFileLogger
     {
+        void Log();
     }
 }
