@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface IConsoleLogger
+    public interface IConsoleLogger
     {
+        void SetVehicles(List<IVehicle> vehicles);
+        void SetSeperations(List<ISeperation> seperations);
     }
 }
