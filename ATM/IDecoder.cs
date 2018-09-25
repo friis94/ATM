@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface IDecoder
+    public interface IDecoder
     {
+        IVehicle Decoder();
     }
 }
