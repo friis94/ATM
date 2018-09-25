@@ -11,7 +11,7 @@ namespace ATM.Unit.Test
         [TestCase()]
         public void DummyTest()
         {
-            bool result = false;
+            bool result = true;
             Assert.IsFalse(result, "Dummy test");
         }
     }
