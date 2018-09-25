@@ -10,6 +10,6 @@ namespace ATM
     public interface ISeperationDetector
     {
         event EventHandler SeperationEvent;
-         
+        void Update(List<IVehicle> vehicles);
     }
 }
