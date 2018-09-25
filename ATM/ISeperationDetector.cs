@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
+    public class SeperationChangedEventArgs : EventArgs
+    {
+        public List<ISeperation> seperations { get; set; }
+    }
+
     public interface ISeperationDetector
     {
         event EventHandler SeperationEvent;

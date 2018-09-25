@@ -45,6 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ATMController.cs" />
+    <Compile Include="Airplane.cs" />
+    <Compile Include="ConsolerLogger.cs" />
+    <Compile Include="Decoder.cs" />
+    <Compile Include="Filelogger.cs" />
     <Compile Include="IDecoder.cs" />
     <Compile Include="IConsoleLogger.cs" />
     <Compile Include="IFileLogger.cs" />
@@ -52,6 +56,8 @@
     <Compile Include="ISeperationDetector.cs" />
     <Compile Include="IVehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seperation.cs" />
+    <Compile Include="SeperationDetector.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
