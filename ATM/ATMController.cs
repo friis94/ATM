@@ -10,11 +10,16 @@ namespace ATM
     {
 
         public event EventHandler SeperationEventHandler;
+        private ISeperationDetector seperationDetector;
 
-        void Update(List<IVehicle> vehicles)
+
+        public ATMController()
         {
-
+            this.seperationDetector = new SeperationDetector();
+            seperationDetector.SeperationEvent += Update;
         }
+
+
 
 
         public void Update(object source, SeperationChangedEventArgs args)
