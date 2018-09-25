@@ -8,5 +8,10 @@ namespace ATM
 {
     class SeperationDetector : ISeperationDetector
     {
+        public event EventHandler SeperationEvent;
+        public void Update(List<IVehicle> vehicles)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
