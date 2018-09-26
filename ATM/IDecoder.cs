@@ -8,6 +8,6 @@ namespace ATM
 {
     public interface IDecoder
     {
-        IVehicle Decoder();
+        List<IVehicle> Decode(List<string> transponderData);
     }
 }
