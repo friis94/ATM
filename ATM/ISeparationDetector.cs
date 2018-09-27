@@ -9,14 +9,13 @@ namespace ATM
 {
     public class SeparationChangedEventArgs : EventArgs
     {
-        public List<ISeparation> seperations { get; set; }
+        public List<ISeparation> separations { get; set; }
     }
 
     public interface ISeparationDetector
     {
-        event EventHandler SeperationEvent;
-        void Update(List<IVehicle> vehicles);
+        event EventHandler<SeparationChangedEventArgs> SeparationEvent;
 
-        List<ISeparation> CalculateSeperations(List<IVehicle> vehicles);
+        void CalculateSeparations(List<IVehicle> vehicles);
     }
 }

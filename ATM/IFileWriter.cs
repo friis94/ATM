@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    public interface IController
+    public interface IFileWriter
     {
-
-        
+        void WriteLine(string str);
     }
 }
