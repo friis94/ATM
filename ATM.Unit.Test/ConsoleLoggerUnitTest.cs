@@ -16,6 +16,7 @@ namespace ATM.Unit.Test
         [Test]
         public void TestMethod1()
         {
+
             ConsolerLogger uut = new ConsolerLogger();
 
             // Separation event between to airplanes

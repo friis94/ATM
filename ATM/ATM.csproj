@@ -49,10 +49,12 @@
     <Compile Include="ConsolerLogger.cs" />
     <Compile Include="Decoder.cs" />
     <Compile Include="FileLogger.cs" />
+    <Compile Include="FileWriter.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="IDecoder.cs" />
     <Compile Include="IConsoleLogger.cs" />
     <Compile Include="IFileLogger.cs" />
+    <Compile Include="IFileWriter.cs" />
     <Compile Include="ISeparation.cs" />
     <Compile Include="ISeparationDetector.cs" />
     <Compile Include="IVehicle.cs" />
