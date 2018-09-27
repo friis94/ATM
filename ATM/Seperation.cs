@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class Seperation
+    public class Seperation : ISeperation
     {
+        public IVehicle VehicleA { get; set; }
+        public IVehicle VehicleB { get; set; }
+        public DateTime TimeStamp { get; set; }
     }
 }
