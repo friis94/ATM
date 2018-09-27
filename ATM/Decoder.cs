@@ -19,7 +19,7 @@ namespace ATM
 
             foreach (var data in transponderData)
             {
-                IVehicle vehicle = new Vehicle();
+                IVehicle vehicle = new Airplane();
                 string[] dataSplit = data.Split(';');
                 vehicle.Tag = dataSplit[0];
 
