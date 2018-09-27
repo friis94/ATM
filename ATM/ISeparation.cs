@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ATM
 {
 
-    public interface ISeperation
+    public interface ISeparation
     {
         IVehicle VehicleA { get; set; }
         IVehicle VehicleB { get; set; }

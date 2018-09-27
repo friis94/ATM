@@ -9,6 +9,6 @@ namespace ATM
     public interface IConsoleLogger
     {
         void SetVehicles(List<IVehicle> vehicles);
-        void SetSeperations(List<ISeperation> seperations);
+        void SetSeperations(List<ISeparation> seperations);
     }
 }
