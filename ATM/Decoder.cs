@@ -12,77 +12,61 @@ namespace ATM
     public class Decoder : IDecoder
     {
         private List<IVehicle> vehicleList = new List<IVehicle>();
-       // private IVehicle vehicle = new IVehicle();
-
+       
         public List<IVehicle> Decode(List<string> transponderData)
         {
-            // ATR423;39045;12932;14000;20151006213456789
-            IVehicle vehicle = new Airplane();
-            int indexStart = 0;
-            int indexEnd = 0;
+            
+
             foreach (var data in transponderData)
             {
-                indexEnd = data.IndexOf(";", indexStart);
-                if (indexEnd > 0)
-                {
-                    vehicle.Tag = data.Substring(indexStart, indexEnd);
-                }
-                
-                indexStart = indexEnd + 1;
-                indexEnd = data.IndexOf(";", indexStart);
-                try
-                {
-                    vehicle.Xcoordinate = Int32.Parse(data.Substring(indexStart, indexEnd - indexStart));
-                }
-                catch (FormatException e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-                
+                IVehicle vehicle = new Vehicle();
+                string[] dataSplit = data.Split(';');
+                vehicle.Tag = dataSplit[0];
 
-                indexStart = indexEnd + 1;
-                indexEnd = data.IndexOf(";", indexStart);
                 try
                 {
-                    vehicle.Ycoordinate = Int32.Parse(data.Substring(indexStart, indexEnd - indexStart));
+                    vehicle.Xcoordinate = Int32.Parse(dataSplit[1]);
                 }
                 catch (FormatException e)
                 {
                     Console.WriteLine(e);
                     throw;
                 }
-                
 
-                
-                indexStart = indexEnd + 1;
-                indexEnd = data.IndexOf(";", indexStart);
                 try
                 {
-                    vehicle.Altitude = Int32.Parse(data.Substring(indexStart, indexEnd - indexStart));
+                    vehicle.Ycoordinate = Int32.Parse(dataSplit[2]);
                 }
                 catch (FormatException e)
                 {
                     Console.WriteLine(e);
                     throw;
                 }
-                
-                /*
-                indexStart = indexEnd + 1;
+
                 try
                 {
-                    vehicle.Timestamp = DateTime.Parse(data.Substring(indexStart));
+                    vehicle.Altitude = Int32.Parse(dataSplit[3]);
                 }
-                catch (DataMisalignedException e)
+                catch (FormatException e)
                 {
                     Console.WriteLine(e);
                     throw;
-                }*/
-                
+                }
+
+                try
+                {
+                    vehicle.Timestamp = DateTime.ParseExact(dataSplit[4], "yyyyMMddHHmmssFFF", null);
+
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+
                 vehicleList.Add(vehicle);
+
             }
-
-
             return vehicleList;
         }
     }
