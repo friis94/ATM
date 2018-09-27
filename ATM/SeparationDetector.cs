@@ -8,15 +8,18 @@ namespace ATM
 {
     public class SeparationDetector : ISeparationDetector
     {
-        public event EventHandler SeperationEvent;
-        public void Update(List<IVehicle> vehicles)
+        public event EventHandler<SeparationChangedEventArgs> SeparationEvent;
+        private SeparationChangedEventArgs args;
+        public List<ISeparation> Separations;
+
+
+        public SeparationDetector()
         {
-            throw new NotImplementedException();
+            this.Separations = new List<ISeparation>();
         }
 
-        public List<ISeparation> CalculateSeperations(List<IVehicle> vehicles)
+        public void CalculateSeparations(List<IVehicle> vehicles)
         {
-            List < ISeparation > seperations = new List<ISeparation>();
             for (int i = 0; i < vehicles.Count; i++)
             {
                 int counter;
@@ -34,15 +37,20 @@ namespace ATM
                     if ((vehicles[i].Altitude - vehicles[counter].Altitude < 300) && distanceBetweenVehicles < 5000)
                     {
                         ISeparation separation = new Separation(vehicles[i], vehicles[counter],DateTime.Now);
-                        seperations.Add(separation);
+                        Separations.Add(separation);
                     }
                     
                 }
             }
 
-            return seperations;
+            args.separations = Separations;
+            HandleEvent(args);
 
+        }
 
+        protected virtual void HandleEvent(SeparationChangedEventArgs e)
+        {
+            SeparationEvent?.Invoke(this, e);
         }
 
     }

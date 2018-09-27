@@ -19,7 +19,7 @@ namespace ATM
         }
 
         // Log a separation event
-        public void Log(ISeperation separation)
+        public void Log(ISeparation separation)
         {
             // Format date and time
             var dateTimeString = separation.TimeStamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);

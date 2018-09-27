@@ -6,26 +6,31 @@ using System.Threading.Tasks;
 
 namespace ATM.Unit.Test
 {
-    class FakeATMController
+    class FakeATMController : IController
     {
 
-        public event EventHandler SeperationEventHandler;
         private ISeparationDetector _separationDetector;
         private List<IVehicle> vehicles;
-        private List<ISeparation> seperations;
+        private List<ISeparation> _separations;
+
 
 
         public FakeATMController()
         {
 
             this._separationDetector = new SeparationDetector();
-            _separationDetector.SeperationEvent += Update;
+            _separationDetector.SeparationEvent += Update;
 
         }
 
-        public void Update(object source, EventArgs args)
+
+
+
+        public void Update(object source, SeparationChangedEventArgs args)
         {
-            
+
+            this._separations = args.separations;
+
         }
 
 

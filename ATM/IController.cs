@@ -9,7 +9,6 @@ namespace ATM
     public interface IController
     {
 
-
-        void Update(object source, EventArgs args);
+        
     }
 }
