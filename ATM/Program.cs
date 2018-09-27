@@ -9,13 +9,13 @@ namespace ATM
     class Program
     {
 
-        static void Main(string[] args)
+       /* static void Main(string[] args)
         {
             ATMController controller = new ATMController();
             ISeparationDetector separationDetector = new SeparationDetector();
             
         }
-
+        */
 
     }
 }

@@ -10,7 +10,8 @@ namespace ATM.Application
     {
         static void Main(string[] args)
         {
-            ConsolerLogger uut = new ConsolerLogger();
+            IConsoleWriter writer = new ConsoleWriter();
+            ConsoleLogger uut = new ConsoleLogger(writer);
 
             // Separation event between to airplanes
             IVehicle airplaneA = new Airplane();

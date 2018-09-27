@@ -46,9 +46,11 @@
   <ItemGroup>
     <Compile Include="ATMController.cs" />
     <Compile Include="Airplane.cs" />
-    <Compile Include="ConsolerLogger.cs" />
+    <Compile Include="ConsoleLogger.cs" />
+    <Compile Include="ConsoleWriter.cs" />
     <Compile Include="Decoder.cs" />
     <Compile Include="FileLogger.cs" />
+    <Compile Include="IConsoleWriter.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="IDecoder.cs" />
     <Compile Include="IConsoleLogger.cs" />
