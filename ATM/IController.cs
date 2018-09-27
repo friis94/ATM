@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class Seperation
+    interface IController
     {
+
+        void Update(object source, EventArgs args);
+
     }
 }

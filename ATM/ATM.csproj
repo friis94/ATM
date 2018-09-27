@@ -49,15 +49,17 @@
     <Compile Include="ConsolerLogger.cs" />
     <Compile Include="Decoder.cs" />
     <Compile Include="FileLogger.cs" />
+    <Compile Include="IController.cs" />
     <Compile Include="IDecoder.cs" />
     <Compile Include="IConsoleLogger.cs" />
     <Compile Include="IFileLogger.cs" />
-    <Compile Include="ISeperation.cs" />
-    <Compile Include="ISeperationDetector.cs" />
+    <Compile Include="ISeparation.cs" />
+    <Compile Include="ISeparationDetector.cs" />
     <Compile Include="IVehicle.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Seperation.cs" />
-    <Compile Include="SeperationDetector.cs" />
+    <Compile Include="Separation.cs" />
+    <Compile Include="SeparationDetector.cs" />
     <Compile Include="Vehicle.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
