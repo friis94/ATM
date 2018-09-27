@@ -10,6 +10,9 @@ namespace ATM.Application
     {
         static void Main(string[] args)
         {
+            ATMController controller = new ATMController();
+
+            
             ConsolerLogger uut = new ConsolerLogger();
 
             // Separation event between to airplanes

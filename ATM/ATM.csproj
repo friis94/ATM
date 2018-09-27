@@ -47,10 +47,12 @@
     <Compile Include="ATMController.cs" />
     <Compile Include="Airplane.cs" />
     <Compile Include="ConsolerLogger.cs" />
+    <Compile Include="CourseCalculator.cs" />
     <Compile Include="Decoder.cs" />
     <Compile Include="FileLogger.cs" />
     <Compile Include="FileWriter.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="ICourseCalculator.cs" />
     <Compile Include="IDecoder.cs" />
     <Compile Include="IConsoleLogger.cs" />
     <Compile Include="IFileLogger.cs" />

@@ -27,9 +27,9 @@ namespace ATM.Unit.Test
 
             // Call log on UUT
             uut.Log(sep);
-          
+
             fileWriter.Received().WriteLine("[Separation Event] between Airplane A and Airplane B @ 2000-12-24 18:00:10.000");
-   
+
         }
     }
 }

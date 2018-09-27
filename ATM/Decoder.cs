@@ -11,11 +11,11 @@ namespace ATM
 {
     public class Decoder : IDecoder
     {
-        private List<IVehicle> vehicleList = new List<IVehicle>();
        
         public List<IVehicle> Decode(List<string> transponderData)
         {
-            
+            Console.WriteLine($"Decoding.. {transponderData.Count}");
+            List<IVehicle> vehicleList = new List<IVehicle>();
 
             foreach (var data in transponderData)
             {
