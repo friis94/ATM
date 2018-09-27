@@ -9,7 +9,7 @@ namespace ATM
 {
     public class ConsolerLogger : IConsoleLogger
     {
-        public void SetSeperations(List<ISeperation> separations)
+        public void SetSeparations(List<ISeparation> separations)
         {
             Console.WriteLine(" ------ Airplanes in the airspace ------");
             foreach (var s in separations)
