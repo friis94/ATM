@@ -12,6 +12,8 @@ namespace ATM.Unit.Test
     class SeparationDetectorUnitTest
     {
 
+
+
         [Test]
         public void DetectSeperationEvent_AddTwoVehiclesOnCollision_EqualComparisonOfVehiclesIsTrue()
         {
@@ -77,6 +79,63 @@ namespace ATM.Unit.Test
             //Assert
             Assert.Null(controller.separations);
 
+        }
+
+        [Test]
+        public void DetectTwoOfThreeOnCollision_AddTwoVehiclesOnCollisionAndOneNot_SeperationsCountInControllerIsTwo()
+        {
+            //Arrange
+
+            IController controller = new FakeATMController();
+            ISeparationDetector _uut = controller.separationDetector;
+            List<IVehicle> vehicles = new List<IVehicle>();
+
+            //Adding two colliding airplanes
+            Airplane vehicleA = new Airplane();
+            vehicleA.Altitude = 100;
+            vehicleA.Xcoordinate = 100;
+            vehicleA.Ycoordinate = 100;
+
+            Airplane vehicleB = new Airplane();
+            vehicleA.Altitude = 100;
+            vehicleA.Xcoordinate = 99;
+            vehicleA.Ycoordinate = 99;
+
+            Airplane vehicleC = new Airplane();
+            vehicleA.Altitude = 100;
+            vehicleA.Xcoordinate = 10000;
+            vehicleA.Ycoordinate = 10000;
+
+            vehicles.Add(vehicleA);
+            vehicles.Add(vehicleB);
+            vehicles.Add(vehicleC);
+            
+
+            controller.vehicles = vehicles;
+
+            //Act
+            _uut.CalculateSeparations(vehicles);
+
+            //Assert
+            Assert.That(controller.separations.Count.Equals(2));
+        }
+
+        [Test]
+        public void NoAirplanesNoDetection_AddEmptyList_SeperationsInControllerIsNull()
+        {
+            //Arrange
+
+            IController controller = new FakeATMController();
+            ISeparationDetector _uut = controller.separationDetector;
+            List<IVehicle> vehicles = new List<IVehicle>();
+
+            controller.vehicles = vehicles;
+
+            //Act
+            _uut.CalculateSeparations(vehicles);
+
+            //Assert
+            Assert.Null(controller.separations);
         }
 
     }

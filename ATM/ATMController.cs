@@ -29,8 +29,6 @@ namespace ATM
         public void Update(object source, SeparationChangedEventArgs args)
         {
             
-
-
         }
 
     }
