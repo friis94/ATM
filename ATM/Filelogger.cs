@@ -10,12 +10,12 @@ namespace ATM
     public class FileLogger : IFileLogger
     {
         // Which file to log to
-        private readonly string _filePath;
+        private readonly IFileWriter _fileWriter;
 
         // FileLogger constructor
-        public FileLogger(string filePath)
+        public FileLogger(IFileWriter fileWriter)
         {
-            _filePath = filePath;
+            _fileWriter = fileWriter;
         }
 
         // Log a separation event
@@ -25,7 +25,7 @@ namespace ATM
             var dateTimeString = separation.TimeStamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
 
             // Log to txt file
-            System.IO.File.AppendAllText(_filePath, $"[Separation Event] between {separation.VehicleA.Tag} and {separation.VehicleB.Tag} @ {dateTimeString}" + Environment.NewLine);  
+            _fileWriter.WriteLine($"[Separation Event] between {separation.VehicleA.Tag} and {separation.VehicleB.Tag} @ {dateTimeString}");
         }
     }
 }
