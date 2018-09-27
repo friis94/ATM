@@ -17,7 +17,7 @@ namespace ATM
         public List<IVehicle> Decode(List<string> transponderData)
         {
             // ATR423;39045;12932;14000;20151006213456789
-            IVehicle vehicle = new Vehicle();
+            IVehicle vehicle = new Airplane();
             int indexStart = 0;
             int indexEnd = 0;
             foreach (var data in transponderData)
