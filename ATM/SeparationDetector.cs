@@ -15,6 +15,7 @@ namespace ATM
 
         public SeparationDetector()
         {
+            args = new SeparationChangedEventArgs();
             this.Separations = new List<ISeparation>();
         }
 
@@ -44,7 +45,11 @@ namespace ATM
             }
 
             args.separations = Separations;
-            HandleEvent(args);
+
+            if (Separations.Count > 0)
+            {
+                HandleEvent(args);
+            }
 
         }
 

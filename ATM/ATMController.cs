@@ -8,18 +8,18 @@ namespace ATM
 {
     public class ATMController : IController
     {
-        
-        private ISeparationDetector _separationDetector;
-        private List<IVehicle> vehicles;
-        private List<ISeparation> seperations;
-        
+
+        public ISeparationDetector separationDetector { get; set; }
+        public List<IVehicle> vehicles { get; set; }
+        public List<ISeparation> separations { get; set; }
+
 
 
         public ATMController()
         {
             
-            this._separationDetector = new SeparationDetector();
-            _separationDetector.SeparationEvent += Update;
+            this.separationDetector = new SeparationDetector();
+            separationDetector.SeparationEvent += Update;
             
         }
 
