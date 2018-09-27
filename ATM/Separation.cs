@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class Separation : ISeparation
+    public class Separation : ISeparation
     {
 
         public Separation(IVehicle vehicleA, IVehicle vehicleB, DateTime timeStamp)
