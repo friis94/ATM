@@ -1,22 +1,15 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NUnit.Framework;
-using Assert = NUnit.Framework.Assert;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ATM.Unit.Test
+namespace ATM.Application
 {
-    /// <summary>
-    /// Summary description for ConsoleLoggerUnitTest
-    /// </summary>
-    [TestFixture]
-    public class ConsoleLoggerUnitTest
+    class Program
     {
-        [Test]
-        public void TestMethod1()
+        static void Main(string[] args)
         {
-
             ConsolerLogger uut = new ConsolerLogger();
 
             // Separation event between to airplanes
@@ -31,7 +24,18 @@ namespace ATM.Unit.Test
 
             uut.SetSeparations(seps);
 
-            Assert.AreEqual(0, 0);
+            ATM.Decoder decoder= new ATM.Decoder();
+
+            List<string> de = new List<string>();
+
+            de.Add("ATR423;39045;12932;14000;20151006213456789");
+            de.Add("ATT423;39045;12932;14000;20151006213456789");
+
+            List<IVehicle> ve = decoder.Decode(de);
+
+            uut.SetVehicles(ve);
+
+            Console.ReadKey();
         }
     }
 }

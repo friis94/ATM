@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    public interface IConsoleLogger
+    public interface IFileWriter
     {
-        void SetVehicles(List<IVehicle> vehicles);
-        void SetSeparations(List<ISeparation> separations);
+        void WriteLine(string str);
     }
 }
