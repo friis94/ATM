@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface IController
+    public class Seperation : ISeperation
     {
+        public IVehicle VehicleA { get; set; }
+        public IVehicle VehicleB { get; set; }
+        public DateTime TimeStamp { get; set; }
 
-        void Update(object source, EventArgs args);
-
+        public Seperation(IVehicle vehicleA, IVehicle vehicleB, DateTime timeStamp)
+        {
+            VehicleA = vehicleA;
+            VehicleB = vehicleB;
+            TimeStamp = timeStamp;
+        }
     }
 }

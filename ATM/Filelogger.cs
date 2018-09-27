@@ -4,13 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ATM
 {
-    class FileLogger
+    public class FileLogger : IFileLogger
     {
+        private string _filePath;
+        public FileLogger(string filePath)
+        {
+            _filePath = filePath;
+        }
 
+        public void Log(ISeperation seperation)
+        {
+            System.IO.File.AppendAllText(_filePath, $"[Seperation Event] between {seperation.VehicleA.Tag} and {seperation.VehicleB.Tag} @ 2018-12-24 21:34:56.789" + Environment.NewLine);
+            
 
-
-
+        }
     }
 }
