@@ -24,11 +24,11 @@ namespace ATM.Unit.Test
             airplaneA.Tag = "Airplane A";
             airplaneB.Tag = "Airplane B";
             DateTime dt = DateTime.Now;
-            ISeperation sep = new Seperation(airplaneA, airplaneB, dt);
-            List<ISeperation> seps = new List<ISeperation>();
+            ISeparation sep = new Separation(airplaneA, airplaneB, dt);
+            List<ISeparation> seps = new List<ISeparation>();
             seps.Add(sep);
 
-            uut.SetSeperations(seps);
+            uut.SetSeparations(seps);
 
             Assert.AreEqual(0, 0);
         }
