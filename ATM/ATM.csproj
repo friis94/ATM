@@ -58,7 +58,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seperation.cs" />
     <Compile Include="SeperationDetector.cs" />
-    <Compile Include="Vehicle.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
