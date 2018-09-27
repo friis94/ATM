@@ -70,6 +70,7 @@
     <Compile Include="FileLoggerUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DecoderUnitTest.cs" />
+    <Compile Include="SeparationDetectorUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

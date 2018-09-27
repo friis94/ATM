@@ -16,11 +16,15 @@ namespace ATM
         private IDecoder _decoder;
         private ICourseCalculator _courseCalculator;
 
+        private IConsoleWriter _consoleWriter;
         private IConsoleLogger _consoleLogger;
 
-        private List<IVehicle> vehicles;
-        private List<ISeparation> seperations;
+    
         
+        public ISeparationDetector separationDetector { get; set; }
+        public List<IVehicle> vehicles { get; set; }
+        public List<ISeparation> separations { get; set; }
+
 
 
         public ATMController()
@@ -33,10 +37,11 @@ namespace ATM
             
 
             this._separationDetector = new SeparationDetector();
-            _separationDetector.SeperationEvent += Update;
+            _separationDetector.SeparationEvent += Update;
 
             // Console logger
-            _consoleLogger = new ConsolerLogger();
+            _consoleWriter = new ConsoleWriter();
+            _consoleLogger = new ConsoleLogger(_consoleWriter);
 
             _transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
             _transponderReceiver.TransponderDataReady += NewTransponderData;
@@ -46,7 +51,7 @@ namespace ATM
 
 
 
-        public void Update(object source, EventArgs args)
+        public void Update(object source, SeparationChangedEventArgs args)
         {
             
         }

@@ -8,41 +8,70 @@ namespace ATM
 {
     public class SeparationDetector : ISeparationDetector
     {
-        public event EventHandler SeperationEvent;
-        public void Update(List<IVehicle> vehicles)
+        public event EventHandler<SeparationChangedEventArgs> SeparationEvent;
+        private SeparationChangedEventArgs args;
+        public List<ISeparation> Separations;
+        private List<String> tags;
+
+
+        public SeparationDetector()
         {
-            throw new NotImplementedException();
+            args = new SeparationChangedEventArgs();
+            this.Separations = new List<ISeparation>();
         }
 
-        public List<ISeparation> CalculateSeperations(List<IVehicle> vehicles)
+        public void CalculateSeparations(List<IVehicle> vehicles)
         {
-            List < ISeparation > seperations = new List<ISeparation>();
+
+            Separations = new List<ISeparation>();
+
+            //Adding the correct seperations
             for (int i = 0; i < vehicles.Count; i++)
             {
+                if (vehicles.Count < 2)
+                {
+                    break;
+                }
+
                 int counter;
 
 
                 for (counter = i + 1; counter < vehicles.Count - i; counter++)
                 {
+                    
 
-                    Double xDistance = Math.Sqrt(Math.Sqrt(vehicles[i].Xcoordinate) - vehicles[counter].Xcoordinate);
-                    Double yDistance = Math.Sqrt(Math.Sqrt(vehicles[i].Ycoordinate) - vehicles[counter].Ycoordinate);
+                    double xDistance = Math.Sqrt(Math.Sqrt(Math.Abs((double)vehicles[i].Xcoordinate - (double)vehicles[counter].Xcoordinate)));
+                    double yDistance = Math.Sqrt(Math.Sqrt(Math.Abs((double)vehicles[i].Ycoordinate - (double)vehicles[counter].Ycoordinate)));
 
-                    Double distanceBetweenVehicles = Math.Sqrt(xDistance + yDistance);
+                    double distanceBetweenVehicles = Math.Sqrt(xDistance + yDistance);
 
 
-                    if ((vehicles[i].Altitude - vehicles[counter].Altitude < 300) && distanceBetweenVehicles < 5000)
+                    if ((Math.Abs(vehicles[i].Altitude - vehicles[counter].Altitude) < 300) && distanceBetweenVehicles < 5000)
                     {
                         ISeparation separation = new Separation(vehicles[i], vehicles[counter],DateTime.Now);
-                        seperations.Add(separation);
+                        Separations.Add(separation);
+
                     }
                     
                 }
             }
 
-            return seperations;
+            
 
 
+            
+
+            if (Separations.Count > 0)
+            {
+                args.separations = Separations;
+                HandleEvent(args);
+            }
+
+        }
+
+        protected virtual void HandleEvent(SeparationChangedEventArgs e)
+        {
+            SeparationEvent?.Invoke(this, e);
         }
 
     }
