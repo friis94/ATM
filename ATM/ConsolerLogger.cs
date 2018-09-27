@@ -11,26 +11,26 @@ namespace ATM
     {
         public void SetSeparations(List<ISeparation> separations)
         {
-            Console.WriteLine(" ------ Airplanes in the airspace ------");
+            Console.WriteLine(" ------------------------------------ Separation Event -----------------------------------");
             foreach (var s in separations)
             {
                 string timeStampString = s.TimeStamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
                 Console.WriteLine($"Separation between {s.VehicleA.Tag} and {s.VehicleB.Tag} @ {timeStampString}");
             }
 
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine("------------------------------------------------------------------------------------------");
         }
 
         public void SetVehicles(List<IVehicle> vehicles)
         {
-            Console.WriteLine(" ------ Airplanes in the airspace ------");
+            Console.WriteLine(" ------------------------------- Airplanes in the airspace -------------------------------");
             foreach (var v in vehicles)
             {
                 string timeStampString = v.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
-                Console.WriteLine($"{v.Tag} , Coordinate(x, y): {v.Xcoordinate}, {v.Ycoordinate}), Altitude: {v.Altitude}, Velocity: {v.velocity}, Compass course: {v.course}");
+                Console.WriteLine($"{v.Tag} , Coordinate(x, y): ({v.Xcoordinate}, {v.Ycoordinate}), Altitude: {v.Altitude}, Velocity: {v.velocity}, Compass course: {v.course}");
             }
 
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine("------------------------------------------------------------------------------------------");
         }
     }
 }
