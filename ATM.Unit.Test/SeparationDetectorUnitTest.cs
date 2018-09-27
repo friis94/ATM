@@ -30,9 +30,9 @@ namespace ATM.Unit.Test
             vehicleA.Ycoordinate = 100;
 
             Airplane vehicleB = new Airplane();
-            vehicleA.Altitude = 99;
-            vehicleA.Xcoordinate = 99;
-            vehicleA.Ycoordinate = 99;
+            vehicleB.Altitude = 99;
+            vehicleB.Xcoordinate = 99;
+            vehicleB.Ycoordinate = 99;
 
             vehicles.Add(vehicleA);
             vehicles.Add(vehicleB);
@@ -64,9 +64,9 @@ namespace ATM.Unit.Test
             vehicleA.Ycoordinate = 100;
 
             Airplane vehicleB = new Airplane();
-            vehicleA.Altitude = 600;
-            vehicleA.Xcoordinate = 99;
-            vehicleA.Ycoordinate = 99;
+            vehicleB.Altitude = 600;
+            vehicleB.Xcoordinate = 99;
+            vehicleB.Ycoordinate = 99;
 
             vehicles.Add(vehicleA);
             vehicles.Add(vehicleB);
@@ -97,14 +97,14 @@ namespace ATM.Unit.Test
             vehicleA.Ycoordinate = 100;
 
             Airplane vehicleB = new Airplane();
-            vehicleA.Altitude = 100;
-            vehicleA.Xcoordinate = 99;
-            vehicleA.Ycoordinate = 99;
+            vehicleB.Altitude = 100;
+            vehicleB.Xcoordinate = 99;
+            vehicleB.Ycoordinate = 99;
 
             Airplane vehicleC = new Airplane();
-            vehicleA.Altitude = 100;
-            vehicleA.Xcoordinate = 10000;
-            vehicleA.Ycoordinate = 10000;
+            vehicleC.Altitude = 100;
+            vehicleC.Xcoordinate = 10000;
+            vehicleC.Ycoordinate = 10000;
 
             vehicles.Add(vehicleA);
             vehicles.Add(vehicleB);
@@ -137,6 +137,119 @@ namespace ATM.Unit.Test
             //Assert
             Assert.Null(controller.separations);
         }
+
+
+        [Test]
+        public void SeperationsStaysOnList_AddSeperationTimesTwo_FirstSeperationIsStillInList()
+        {
+            //Arrange
+
+            IController controller = new FakeATMController();
+            ISeparationDetector _uut = controller.separationDetector;
+            List<IVehicle> vehicles = new List<IVehicle>();
+
+            //Adding two colliding airplanes
+            Airplane vehicleA = new Airplane();
+            vehicleA.Altitude = 100;
+            vehicleA.Xcoordinate = 100;
+            vehicleA.Ycoordinate = 100;
+
+            Airplane vehicleB = new Airplane();
+            vehicleB.Altitude = 100;
+            vehicleB.Xcoordinate = 99;
+            vehicleB.Ycoordinate = 99;
+
+            Airplane vehicleC = new Airplane();
+            vehicleC.Altitude = 99;
+            vehicleC.Xcoordinate = 99;
+            vehicleC.Ycoordinate = 99;
+
+
+            vehicles.Add(vehicleA);
+            vehicles.Add(vehicleB);
+
+
+            controller.vehicles = vehicles;
+
+            //Act
+            _uut.CalculateSeparations(vehicles);
+            ISeparation seperation = controller.separations[0];
+
+            vehicles.Add(vehicleC);
+            controller.vehicles = vehicles;
+            _uut.CalculateSeparations(vehicles);
+
+            //Assert
+            Assert.That(controller.separations[0].VehicleA.Equals(seperation.VehicleA) && controller.separations[0].VehicleB.Equals(seperation.VehicleB));
+        }
+
+
+        [Test]
+        public void SeperationsGoneFromList_AddSeperationTimesTwoThenRemoveFirst_FirstSeperationIsGoneFromList()
+        {
+            //Arrange
+
+            IController controller = new FakeATMController();
+            ISeparationDetector _uut = controller.separationDetector;
+            List<IVehicle> vehicles = new List<IVehicle>();
+
+            //Adding two colliding airplanes
+            Airplane vehicleA = new Airplane();
+            vehicleA.Altitude = 100;
+            vehicleA.Xcoordinate = 100;
+            vehicleA.Ycoordinate = 100;
+
+            Airplane vehicleB = new Airplane();
+            vehicleB.Altitude = 100;
+            vehicleB.Xcoordinate = 99;
+            vehicleB.Ycoordinate = 99;
+
+            Airplane vehicleC = new Airplane();
+            vehicleC.Altitude = 99;
+            vehicleC.Xcoordinate = 99;
+            vehicleC.Ycoordinate = 99;
+
+
+            vehicles.Add(vehicleA);
+            vehicles.Add(vehicleB);
+
+
+            controller.vehicles = vehicles;
+
+            //Act
+            _uut.CalculateSeparations(vehicles);
+            ISeparation seperation = controller.separations[0];
+
+
+            vehicles.RemoveAt(0);
+            vehicles.Add(vehicleC);
+            _uut.CalculateSeparations(vehicles);
+            
+            //Assert
+            Assert.AreNotEqual(controller.separations[0],seperation);
+        }
+
+
+
+        [Test]
+        public void AbleToHandleNoVehicles_AddNoVehicles_NoExceptionIsThrown()
+        {
+            //Arrange
+
+            IController controller = new FakeATMController();
+            ISeparationDetector _uut = controller.separationDetector;
+            List<IVehicle> vehicles = new List<IVehicle>();
+            
+            controller.vehicles = vehicles;
+            
+            //No Act
+            
+
+            //Assert
+            Assert.DoesNotThrow(() => { _uut.CalculateSeparations(vehicles); });
+        }
+
+
 
     }
 }
