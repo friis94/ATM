@@ -14,9 +14,16 @@ namespace ATM.Unit.Test
         [Test]
         public void LogOneSeperation()
         {
-
+            // Logger
             IFileLogger uut = new FileLogger(@"C:\Users\Public\ATM.txt");
-            ISeperation sep = new Seperation();
+
+            // Separation event between to airplanes
+            IVehicle airplaneA = new Airplane();
+            IVehicle airplaneB = new Airplane();
+            airplaneA.Tag = "Airplane A";
+            airplaneB.Tag = "Airplane B";
+            DateTime dt = DateTime.Now;
+            ISeperation sep = new Seperation(airplaneA, airplaneB, dt);
 
             uut.Log(sep);
           

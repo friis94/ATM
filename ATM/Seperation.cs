@@ -11,5 +11,12 @@ namespace ATM
         public IVehicle VehicleA { get; set; }
         public IVehicle VehicleB { get; set; }
         public DateTime TimeStamp { get; set; }
+
+        public Seperation(IVehicle vehicleA, IVehicle vehicleB, DateTime timeStamp)
+        {
+            VehicleA = vehicleA;
+            VehicleB = vehicleB;
+            TimeStamp = timeStamp;
+        }
     }
 }

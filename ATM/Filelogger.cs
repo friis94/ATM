@@ -17,8 +17,7 @@ namespace ATM
 
         public void Log(ISeperation seperation)
         {
-            
-            System.IO.File.AppendAllText(_filePath, "[Seperation Event] between XXXX and YYYY @ 2018-12-24 21:34:56.789" + Environment.NewLine);
+            System.IO.File.AppendAllText(_filePath, $"[Seperation Event] between {seperation.VehicleA.Tag} and {seperation.VehicleB.Tag} @ 2018-12-24 21:34:56.789" + Environment.NewLine);
             
 
         }
