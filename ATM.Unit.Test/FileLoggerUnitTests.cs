@@ -23,7 +23,7 @@ namespace ATM.Unit.Test
             airplaneA.Tag = "Airplane A";
             airplaneB.Tag = "Airplane B";
             DateTime dt = DateTime.Now;
-            ISeperation sep = new Seperation(airplaneA, airplaneB, dt);
+            ISeparation sep = new Separation(airplaneA, airplaneB, dt);
 
             uut.Log(sep);
           
