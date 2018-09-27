@@ -7,14 +7,16 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    public class SeperationChangedEventArgs : EventArgs
+    public class SeparationChangedEventArgs : EventArgs
     {
-        public List<ISeperation> seperations { get; set; }
+        public List<ISeparation> seperations { get; set; }
     }
 
-    public interface ISeperationDetector
+    public interface ISeparationDetector
     {
         event EventHandler SeperationEvent;
         void Update(List<IVehicle> vehicles);
+
+        List<ISeparation> CalculateSeperations(List<IVehicle> vehicles);
     }
 }

@@ -1,25 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 
 namespace ATM
 {
     public class FileLogger : IFileLogger
     {
-        private string _filePath;
+        // Which file to log to
+        private readonly string _filePath;
+
+        // FileLogger constructor
         public FileLogger(string filePath)
         {
             _filePath = filePath;
         }
 
-        public void Log(ISeperation seperation)
+        // Log a separation event
+        public void Log(ISeperation separation)
         {
-            System.IO.File.AppendAllText(_filePath, $"[Seperation Event] between {seperation.VehicleA.Tag} and {seperation.VehicleB.Tag} @ 2018-12-24 21:34:56.789" + Environment.NewLine);
-            
+            // Format date and time
+            var dateTimeString = separation.TimeStamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
 
+            // Log to txt file
+            System.IO.File.AppendAllText(_filePath, $"[Separation Event] between {separation.VehicleA.Tag} and {separation.VehicleB.Tag} @ {dateTimeString}" + Environment.NewLine);  
         }
     }
 }

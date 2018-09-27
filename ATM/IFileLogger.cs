@@ -8,6 +8,6 @@ namespace ATM
 {
     public interface IFileLogger
     {
-        void Log(ISeperation seperation);
+        void Log(ISeparation separation);
     }
 }
