@@ -10,6 +10,9 @@ namespace ATM.Application
     {
         static void Main(string[] args)
         {
+
+            IController controller = new ATMController();
+ 
             IConsoleWriter writer = new ConsoleWriter();
             ConsoleLogger uut = new ConsoleLogger(writer);
 

@@ -51,6 +51,7 @@
     <Compile Include="ConsoleWriter.cs" />
     <Compile Include="Decoder.cs" />
     <Compile Include="FileLogger.cs" />
+    <Compile Include="IAirspaceFilter.cs" />
     <Compile Include="IConsoleWriter.cs" />
     <Compile Include="FileWriter.cs" />
     <Compile Include="IController.cs" />

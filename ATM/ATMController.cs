@@ -61,12 +61,14 @@ namespace ATM
             // Decode received transponder data
             List<IVehicle> newVehicles = _decoder.Decode(data.TransponderData);
 
+            Console.WriteLine("New data...");
+
             if (newVehicles.Count > 0)
             {
                 // Calculate course
                 vehicles = _courseCalculator.CalculateCourse(newVehicles, vehicles);
 
-                // TODO: THIS MUST BE DONE IN CONSOLE LOGGER NANNA
+                // TODO: THIS MUST BE DONE IN CONSOLE LOGGER NANNA somehow..
                 System.Console.Clear();
 
                 // Log to the console
