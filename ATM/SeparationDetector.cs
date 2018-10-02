@@ -33,35 +33,31 @@ namespace ATM
             //Adding the correct seperations
             for (int i = 0; i < vehicles.Count; i++)
             {
-                
+                IVehicle vehicleA = vehicles[i];
                 int counter;
-
-
-                for (counter = i + 1; counter < vehicles.Count - i; counter++)
+                
+                for (counter = i + 1; counter < vehicles.Count; counter++)
                 {
-                    
 
-                    double xDistance = Math.Sqrt(Math.Sqrt(Math.Abs((double)vehicles[i].Xcoordinate - (double)vehicles[counter].Xcoordinate)));
-                    double yDistance = Math.Sqrt(Math.Sqrt(Math.Abs((double)vehicles[i].Ycoordinate - (double)vehicles[counter].Ycoordinate)));
-
-                    double distanceBetweenVehicles = Math.Sqrt(xDistance + yDistance);
+                    IVehicle vehicleB = vehicles[counter];
+                    double xDistance = (double)vehicleA.Xcoordinate - (double)vehicleB.Xcoordinate;
+                    double yDistance = (double)vehicleA.Ycoordinate - (double)vehicleB.Ycoordinate;
 
 
-                    if ((Math.Abs(vehicles[i].Altitude - vehicles[counter].Altitude) < 300) && distanceBetweenVehicles < 5000)
+                    double distanceBetweenVehicles = Math.Sqrt(xDistance*xDistance + yDistance*yDistance);
+
+
+                    if ((Math.Abs(vehicleA.Altitude - vehicleB.Altitude) < 300) && distanceBetweenVehicles < 5000)
                     {
-                        ISeparation separation = new Separation(vehicles[i], vehicles[counter],DateTime.Now);
+                        ISeparation separation = new Separation(vehicleA, vehicleB, DateTime.Now);
                         Separations.Add(separation);
 
                     }
                     
                 }
             }
-
             
-
-
             
-
             if (Separations.Count > 0)
             {
                 args.separations = Separations;
