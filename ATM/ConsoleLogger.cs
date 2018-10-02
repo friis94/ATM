@@ -15,6 +15,7 @@ namespace ATM
             _writer = writer;
         }
 
+        
         public void SetSeparations(List<ISeparation> separations)
         {
             _writer.WriteLine(" ------------------------------------ Separation Event -----------------------------------");
@@ -37,6 +38,11 @@ namespace ATM
             }
 
             _writer.WriteLine("------------------------------------------------------------------------------------------");
+        }
+
+        public void ClearConsole()
+        {
+            _writer.Clear();
         }
     }
 }
