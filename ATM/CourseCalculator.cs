@@ -11,6 +11,7 @@ namespace ATM
         // Calculates the course of vehicles in a list, compared to their previous 'old' location.
         public List<IVehicle> CalculateCourse(List<IVehicle> newVehicles, List<IVehicle> oldVehicles)
         {
+            // TODO: skal det ikke være newVehicles.Count == 0 ???
             if (newVehicles == null || oldVehicles == null) return newVehicles;
 
             // Loop through all vehicles and look for them in the list of oldVehicle positions
