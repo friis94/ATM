@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface IAirspaceFilter
+    public interface IAirspaceFilter
     {
         void SetAirSpace(int xmin, int xmax, int ymin, int ymax, int altitudemin, int altitudemax);
         List<IVehicle> FilterVehicles(List<IVehicle> vehicles);
-
     }
 }

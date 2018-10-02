@@ -10,5 +10,6 @@ namespace ATM
     {
         void SetVehicles(List<IVehicle> vehicles);
         void SetSeparations(List<ISeparation> separations);
+        void ClearConsole();
     }
 }

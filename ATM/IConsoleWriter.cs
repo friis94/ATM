@@ -9,5 +9,6 @@ namespace ATM
     public interface IConsoleWriter
     {
         void WriteLine(string data);
+        void Clear();
     }
 }

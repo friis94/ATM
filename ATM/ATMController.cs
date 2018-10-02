@@ -15,6 +15,7 @@ namespace ATM
         private ITransponderReceiver _transponderReceiver;
         private IDecoder _decoder;
         private ICourseCalculator _courseCalculator;
+        private IAirspaceFilter _airspaceFilter;
 
         private IConsoleWriter _consoleWriter;
         private IConsoleLogger _consoleLogger;
@@ -34,7 +35,10 @@ namespace ATM
 
             // Course calculator
             _courseCalculator = new CourseCalculator();
-            
+
+            // Airspace Filter
+            _airspaceFilter = new AirspaceFilter();
+            _airspaceFilter.SetAirSpace(10000, 90000, 10000, 90000, 500, 20000);
 
             this._separationDetector = new SeparationDetector();
             _separationDetector.SeparationEvent += Update;
@@ -45,15 +49,12 @@ namespace ATM
 
             _transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
             _transponderReceiver.TransponderDataReady += NewTransponderData;
-
         }
-
-
 
 
         public void Update(object source, SeparationChangedEventArgs args)
         {
-            
+            _consoleLogger.SetSeparations(args.separations);
         }
 
         public void NewTransponderData(object source, RawTransponderDataEventArgs data)
@@ -61,15 +62,15 @@ namespace ATM
             // Decode received transponder data
             List<IVehicle> newVehicles = _decoder.Decode(data.TransponderData);
 
-            Console.WriteLine("New data...");
+            // Filter the newVehicles 
+            newVehicles = _airspaceFilter.FilterVehicles(newVehicles);
 
             if (newVehicles.Count > 0)
             {
                 // Calculate course
                 vehicles = _courseCalculator.CalculateCourse(newVehicles, vehicles);
 
-                // TODO: THIS MUST BE DONE IN CONSOLE LOGGER NANNA somehow..
-                System.Console.Clear();
+                _consoleLogger.ClearConsole();
 
                 // Log to the console
                 _consoleLogger.SetVehicles(vehicles);
@@ -78,10 +79,6 @@ namespace ATM
             {
                 vehicles = newVehicles;
             }
-            
-            
-            
-            
         }
 
     }
