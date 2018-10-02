@@ -25,14 +25,15 @@ namespace ATM
 
             Separations = new List<ISeparation>();
 
+            if (vehicles.Count < 2)
+            {
+                return;
+            }
+
             //Adding the correct seperations
             for (int i = 0; i < vehicles.Count; i++)
             {
-                if (vehicles.Count < 2)
-                {
-                    break;
-                }
-
+                
                 int counter;
 
 
