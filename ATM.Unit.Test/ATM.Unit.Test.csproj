@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AirspaceFilterUnitTest.cs" />
     <Compile Include="ATMUnitTest.cs" />
     <Compile Include="FakeATMController.cs" />
     <Compile Include="ConsoleLoggerUnitTest.cs" />
