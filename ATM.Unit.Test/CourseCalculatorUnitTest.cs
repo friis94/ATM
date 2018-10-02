@@ -10,6 +10,36 @@ namespace ATM.Unit.Test
     [TestFixture]
     public class CourseCalculatorUnitTest
     {
+
+        [Test]
+        public void CourseCalulatorTest_ReturnNewVehiclesWithNoChangeWhenOldListIsEmpty()
+        {
+            CourseCalculator uut = new CourseCalculator();
+
+            List<IVehicle> newVehicles = new List<IVehicle>();
+            List<IVehicle> oldVehicles = new List<IVehicle>();
+
+            IVehicle airplaneA = new Airplane();
+            airplaneA.Tag = "ATV222";
+            airplaneA.Xcoordinate = 1000;
+            airplaneA.Timestamp = DateTime.Parse("2000/12/24 18:01:10");
+
+            newVehicles.Add(airplaneA);
+
+            Assert.That(uut.CalculateCourse(newVehicles, oldVehicles).Equals(newVehicles));
+        }
+
+        [Test]
+        public void CourseCalulatorTest_ReturnEmptyVehiclesList()
+        {
+            CourseCalculator uut = new CourseCalculator();
+
+            List<IVehicle> newVehicles = new List<IVehicle>();
+            List<IVehicle> oldVehicles = new List<IVehicle>();
+
+           Assert.That(uut.CalculateCourse(newVehicles, oldVehicles).Equals(newVehicles));
+        }
+
         [Test]
          public void CourseCalculatorTest_CorrectSpeedWhenXcoordChange()
         {
