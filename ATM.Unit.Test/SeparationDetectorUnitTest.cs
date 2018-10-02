@@ -193,7 +193,7 @@ namespace ATM.Unit.Test
             ISeparationDetector _uut = controller.separationDetector;
             List<IVehicle> vehicles = new List<IVehicle>();
 
-            //Adding two colliding airplanes
+            //Adding three colliding airplanes
             Airplane vehicleA = new Airplane();
             vehicleA.Altitude = 100;
             vehicleA.Xcoordinate = 100;
@@ -241,9 +241,35 @@ namespace ATM.Unit.Test
             List<IVehicle> vehicles = new List<IVehicle>();
             
             controller.vehicles = vehicles;
+
+            //No Act
+
+
+
+            //Assert
+            Assert.DoesNotThrow(() => { _uut.CalculateSeparations(vehicles); });
+        }
+
+        [Test]
+        public void AbleToHandleOneVehicle_AddOneVehicles_NoExceptionIsThrown()
+        {
+            //Arrange
+
+            IController controller = new FakeATMController();
+            ISeparationDetector _uut = controller.separationDetector;
+            List<IVehicle> vehicles = new List<IVehicle>();
+
+            controller.vehicles = vehicles;
             
             //No Act
-            
+            //Adding two colliding airplanes
+            Airplane vehicleA = new Airplane();
+            vehicleA.Altitude = 100;
+            vehicleA.Xcoordinate = 100;
+            vehicleA.Ycoordinate = 100;
+
+            vehicles.Add(vehicleA);
+            _uut.CalculateSeparations(vehicles);
 
             //Assert
             Assert.DoesNotThrow(() => { _uut.CalculateSeparations(vehicles); });
