@@ -28,7 +28,7 @@ namespace ATM
 
 
 
-        public ATMController()
+        public ATMController(ITransponderReceiver receiver)
         {
             // Decoder
             _decoder = new Decoder();
@@ -47,7 +47,7 @@ namespace ATM
             _consoleWriter = new ConsoleWriter();
             _consoleLogger = new ConsoleLogger(_consoleWriter);
 
-            _transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+            _transponderReceiver = receiver;
             _transponderReceiver.TransponderDataReady += NewTransponderData;
         }
 
