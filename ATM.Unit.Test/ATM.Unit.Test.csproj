@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ATMUnitTest.cs" />
+    <Compile Include="CourseCalculatorUnitTest.cs" />
     <Compile Include="FakeATMController.cs" />
     <Compile Include="ConsoleLoggerUnitTest.cs" />
     <Compile Include="FileLoggerUnitTests.cs" />
