@@ -353,6 +353,74 @@ namespace ATM.Unit.Test
             Assert.That(controller.separations.Count.Equals(1));
         }
 
+        [Test]
+        public void LocationBoundaryWithin_TwoVehiclesWithBoundaryEdge_OneSeperationIsDetected()
+        {
+            //Arrange
+
+            IController controller = new FakeATMController();
+            ISeparationDetector _uut = controller.separationDetector;
+            List<IVehicle> vehicles = new List<IVehicle>();
+
+            controller.vehicles = vehicles;
+
+            //Act
+            //Adding two colliding airplanes
+            Airplane vehicleA = new Airplane();
+            vehicleA.Altitude = 100;
+            vehicleA.Xcoordinate = 100;
+            vehicleA.Ycoordinate = 5099;
+            vehicleA.Tag = "tag1";
+
+            Airplane vehicleB = new Airplane();
+            vehicleB.Altitude = 100;
+            vehicleB.Xcoordinate = 100;
+            vehicleB.Ycoordinate = 100;
+            vehicleB.Tag = "tag2";
+
+            vehicles.Add(vehicleA);
+            vehicles.Add(vehicleB);
+            _uut.CalculateSeparations(vehicles);
+
+            //Assert
+            Assert.That(controller.separations.Count.Equals(1));
+        }
+
+
+        [Test]
+        public void LocationBoundaryExceeded_TwoVehiclesWithBoundaryEdge_NoSeperationIsDetected()
+        {
+            //Arrange
+
+            IController controller = new FakeATMController();
+            ISeparationDetector _uut = controller.separationDetector;
+            List<IVehicle> vehicles = new List<IVehicle>();
+
+            controller.vehicles = vehicles;
+
+            //Act
+            //Adding two not colliding airplanes
+            Airplane vehicleA = new Airplane();
+            vehicleA.Altitude = 100;
+            vehicleA.Xcoordinate = 100;
+            vehicleA.Ycoordinate = 100;
+            vehicleA.Tag = "tag1";
+
+            Airplane vehicleB = new Airplane();
+            vehicleB.Altitude = 100;
+            vehicleB.Xcoordinate = 100;
+            vehicleB.Ycoordinate = 5100;
+            vehicleB.Tag = "tag2";
+
+            vehicles.Add(vehicleA);
+            vehicles.Add(vehicleB);
+            _uut.CalculateSeparations(vehicles);
+
+            //Assert
+            Assert.Null(controller.separations);
+        }
+
+
     }
 
 }
