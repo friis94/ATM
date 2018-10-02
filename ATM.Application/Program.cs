@@ -13,7 +13,7 @@ namespace ATM.Application
 
             IController controller = new ATMController();
  
-            IConsoleWriter writer = new ConsoleWriter();
+            /* IConsoleWriter writer = new ConsoleWriter();
             ConsoleLogger uut = new ConsoleLogger(writer);
 
             // Separation event between to airplanes
@@ -37,7 +37,7 @@ namespace ATM.Application
 
             List<IVehicle> ve = decoder.Decode(de);
 
-            uut.SetVehicles(ve);
+            uut.SetVehicles(ve); */
 
             Console.ReadKey();
         }
