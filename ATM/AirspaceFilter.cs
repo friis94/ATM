@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class AirspaceFilter : IAirspaceFilter
+    public class AirspaceFilter : IAirspaceFilter
     {
         private int _xmin;
         private int _xmax;
@@ -28,9 +28,10 @@ namespace ATM
 
         public List<IVehicle> FilterVehicles(List<IVehicle> vehicles)
         {
-            for (int i = vehicles.Count; i >= 0; i++)
+            for (int i = vehicles.Count-1; i >= 0; i--)
             {
                 IVehicle vehicle = vehicles[i];
+
                 if (vehicle.Xcoordinate < _xmin || vehicle.Xcoordinate > _xmax ||
                     vehicle.Ycoordinate < _ymin || vehicle.Ycoordinate > _ymax ||
                     vehicle.Altitude < _altitudemin || vehicle.Altitude > _altitudemax)
