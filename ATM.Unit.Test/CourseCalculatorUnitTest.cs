@@ -64,7 +64,7 @@ namespace ATM.Unit.Test
 
             newVehicles = uut.CalculateCourse(newVehicles, oldVehicles);
 
-            Assert.AreEqual(newVehicles.First().velocity, 45);
+            Assert.AreEqual(newVehicles.First().velocity, 42);
         }
 
         [Test]
