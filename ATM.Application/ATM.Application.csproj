@@ -41,6 +41,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="TransponderReceiver">
+      <HintPath>..\TransponderReceiver.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -50,6 +53,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ATM.Unit.Test\ATM.Unit.Test.csproj">
+      <Project>{58297A62-FBEC-46E9-9DAF-CE1A0764CE2B}</Project>
+      <Name>ATM.Unit.Test</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ATM\ATM.csproj">
       <Project>{3ceaeed8-8df7-4163-a700-c5b501d9de13}</Project>
       <Name>ATM</Name>

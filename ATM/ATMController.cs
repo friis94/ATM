@@ -20,6 +20,9 @@ namespace ATM
         private IConsoleWriter _consoleWriter;
         private IConsoleLogger _consoleLogger;
 
+        private IFileLogger _fileLogger;
+        
+
     
         
         public ISeparationDetector separationDetector { get; set; }
@@ -28,7 +31,7 @@ namespace ATM
 
 
 
-        public ATMController(ITransponderReceiver receiver)
+        public ATMController(ITransponderReceiver receiver, IFileLogger fileLogger)
         {
             // Decoder
             _decoder = new Decoder();
@@ -47,8 +50,15 @@ namespace ATM
             _consoleWriter = new ConsoleWriter();
             _consoleLogger = new ConsoleLogger(_consoleWriter);
 
+            // File logger
+            _fileLogger = fileLogger;
+
             _transponderReceiver = receiver;
             _transponderReceiver.TransponderDataReady += NewTransponderData;
+
+
+
+
         }
 
 
