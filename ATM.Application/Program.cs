@@ -16,7 +16,11 @@ namespace ATM.Application
 
             ITransponderReceiver _transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
 
-            IController controller = new ATMController(_transponderReceiver);
+            // TODO: Fix Path
+            IFileWriter _writer = new FileWriter("C: DUMMY");
+            IFileLogger _fileLogger = new FileLogger(_writer);
+
+            IController controller = new ATMController(_transponderReceiver, _fileLogger);
             
             
             Console.ReadKey();
