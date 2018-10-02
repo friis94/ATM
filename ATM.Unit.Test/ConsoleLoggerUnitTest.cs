@@ -85,5 +85,16 @@ namespace ATM.Unit.Test
                 writer.WriteLine("------------------------------------------------------------------------------------------");
             });
         }
+
+        [Test]
+        public void ConsoleLogger_ClearConsole()
+        {
+            IConsoleWriter writer = Substitute.For<IConsoleWriter>();
+            ConsoleLogger uut = new ConsoleLogger(writer);
+
+            uut.ClearConsole();
+
+            writer.Received().Clear();
+        }
     }
 }

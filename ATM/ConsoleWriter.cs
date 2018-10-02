@@ -12,5 +12,10 @@ namespace ATM
         {
             Console.WriteLine(data);
         }
+
+        public void Clear()
+        {
+            Console.Clear();
+        }
     }
 }

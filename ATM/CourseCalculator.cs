@@ -28,7 +28,7 @@ namespace ATM
                         int distance = (int)Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
 
                         // Velocity (meters pr second)
-                        int velocity = (1000 * distance) / deltaTime.Milliseconds;
+                        int velocity = (int)((1000 * distance) / deltaTime.TotalMilliseconds);
 
                         // Course (degrees)
                         int course = ((int)(Math.Atan2(deltaY, deltaX) * (180 / Math.PI)) + 360) % 360;
