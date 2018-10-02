@@ -65,12 +65,12 @@ namespace ATM
             // Filter the newVehicles 
             newVehicles = _airspaceFilter.FilterVehicles(newVehicles);
 
+            _consoleLogger.ClearConsole();
+
             if (newVehicles.Count > 0)
             {
                 // Calculate course
                 vehicles = _courseCalculator.CalculateCourse(newVehicles, vehicles);
-
-                _consoleLogger.ClearConsole();
 
                 // Log to the console
                 _consoleLogger.SetVehicles(vehicles);
