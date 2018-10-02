@@ -74,6 +74,9 @@ namespace ATM
 
                 // Log to the console
                 _consoleLogger.SetVehicles(vehicles);
+
+                // Look for separations
+                _separationDetector.CalculateSeparations(vehicles);
             }
             else
             {
