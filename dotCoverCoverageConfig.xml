@@ -12,7 +12,7 @@
   <Filters>
     <ExcludeFilters>
       <FilterEntry>
-	<ModuleMask>ATM.Unit.Test</ModuleMaks>
+	<ModuleMask>ATM.Unit.Test</ModuleMask>
 	</FilterEntry>
     </ExcludeFilters>
   </Filters>

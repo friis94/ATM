@@ -43,6 +43,9 @@ namespace ATM
             _airspaceFilter = new AirspaceFilter();
             _airspaceFilter.SetAirSpace(10000, 90000, 10000, 90000, 500, 20000);
 
+            // Set vehicles list
+            vehicles = new List<IVehicle>();
+
             this._separationDetector = new SeparationDetector();
             _separationDetector.SeparationEvent += Update;
 
