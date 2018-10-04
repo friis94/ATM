@@ -11,16 +11,24 @@ namespace ATM.Unit.Test
     [TestFixture]
     class SeparationDetectorUnitTest
     {
-        [Test]
-        public void DetectOneSeperationEvent_AddTwoVehiclesOnCollision_SeperationsEventCountIsOne()
+
+        private ISeparationDetector _uut;
+        private List<IVehicle> _vehicles;
+        private int eventRaisedCount;
+        [SetUp]
+        public void Init()
         {
-            //Arrange
-            ISeparationDetector _uut = new SeparationDetector();
-            List<IVehicle> vehicles = new List<IVehicle>();
-
-            var eventRaisedCount = 0;
+            
+            eventRaisedCount = 0;
+            _uut = new SeparationDetector();
             _uut.SeparationEvent += (o, e) => eventRaisedCount += 1;
+            _vehicles = new List<IVehicle>();
+        }
 
+        [Test]
+        public void DetectOneSeparationEvent_AddTwoVehiclesOnCollision_SeparationsEventCountIsOne()
+        {
+    
             //Adding two colliding airplanes
             Airplane vehicleA = new Airplane();
             vehicleA.Altitude = 100;
@@ -34,11 +42,11 @@ namespace ATM.Unit.Test
             vehicleB.Ycoordinate = 99;
             vehicleB.Tag = "tag2";
 
-            vehicles.Add(vehicleA);
-            vehicles.Add(vehicleB);
+            _vehicles.Add(vehicleA);
+            _vehicles.Add(vehicleB);
 
             //Act
-            _uut.CalculateSeparations(vehicles);
+            _uut.CalculateSeparations(_vehicles);
 
             //Assert
             Assert.That(eventRaisedCount, Is.EqualTo(1));
@@ -47,13 +55,6 @@ namespace ATM.Unit.Test
         [Test]
         public void DontDetectSeperationEvent_AddTwoVehiclesNotOnCollision_SeperationsEventNotRaised()
         {
-            //Arrange
-
-            ISeparationDetector _uut = new SeparationDetector();
-            List<IVehicle> vehicles = new List<IVehicle>();
-
-            var eventRaised = false;
-            _uut.SeparationEvent += (o, e) => eventRaised = true;
 
             //Adding two colliding airplanes
             Airplane vehicleA = new Airplane();
@@ -66,174 +67,43 @@ namespace ATM.Unit.Test
             vehicleB.Xcoordinate = 99;
             vehicleB.Ycoordinate = 99;
 
-            vehicles.Add(vehicleA);
-            vehicles.Add(vehicleB);
+            _vehicles.Add(vehicleA);
+            _vehicles.Add(vehicleB);
 
             //Act
-            _uut.CalculateSeparations(vehicles);
+            _uut.CalculateSeparations(_vehicles);
 
             //Assert
-            Assert.IsFalse(eventRaised);
-
-        }
-        
-
-        /*
-        
-        [Test]
-        public void SeperationsStaysOnList_AddSeperationTimesTwo_FirstSeperationIsStillInList()
-        {
-            //Arrange
-
-            IController controller = new FakeATMController();
-            ISeparationDetector _uut = controller.separationDetector;
-            List<IVehicle> vehicles = new List<IVehicle>();
-
-            //Adding two colliding airplanes
-            Airplane vehicleA = new Airplane();
-            vehicleA.Altitude = 100;
-            vehicleA.Xcoordinate = 100;
-            vehicleA.Ycoordinate = 100;
-            vehicleA.Tag = "tag1";
-
-            Airplane vehicleB = new Airplane();
-            vehicleB.Altitude = 100;
-            vehicleB.Xcoordinate = 99;
-            vehicleB.Ycoordinate = 99;
-            vehicleB.Tag = "tag2";
-
-            Airplane vehicleC = new Airplane();
-            vehicleC.Altitude = 99;
-            vehicleC.Xcoordinate = 99;
-            vehicleC.Ycoordinate = 99;
-            vehicleC.Tag = "tag3";
-
-
-            vehicles.Add(vehicleA);
-            vehicles.Add(vehicleB);
-
-
-            controller.vehicles = vehicles;
-
-            //Act
-            _uut.CalculateSeparations(vehicles);
-            ISeparation seperation = controller.separations[0];
-
-            vehicles.Add(vehicleC);
-            controller.vehicles = vehicles;
-            _uut.CalculateSeparations(vehicles);
-
-            //Assert
-            Assert.That(controller.separations[0].VehicleA.Equals(seperation.VehicleA) && controller.separations[0].VehicleB.Equals(seperation.VehicleB));
+            Assert.That(eventRaisedCount, Is.EqualTo(0));
         }
 
-
         [Test]
-        public void SeperationsGoneFromList_AddSeperationTimesTwoThenRemoveFirst_FirstSeperationIsGoneFromList()
+        public void HandleEmptyVehicleList_AddNoVehicles_NoExceptionIsThrown()
         {
-            //Arrange
-
-            IController controller = new FakeATMController();
-            ISeparationDetector _uut = controller.separationDetector;
-            List<IVehicle> vehicles = new List<IVehicle>();
-
-            //Adding three colliding airplanes
-            Airplane vehicleA = new Airplane();
-            vehicleA.Altitude = 100;
-            vehicleA.Xcoordinate = 100;
-            vehicleA.Ycoordinate = 100;
-            vehicleA.Tag = "tag1";
-
-            Airplane vehicleB = new Airplane();
-            vehicleB.Altitude = 100;
-            vehicleB.Xcoordinate = 99;
-            vehicleB.Ycoordinate = 99;
-            vehicleB.Tag = "tag2";
-
-            Airplane vehicleC = new Airplane();
-            vehicleC.Altitude = 99;
-            vehicleC.Xcoordinate = 99;
-            vehicleC.Ycoordinate = 99;
-            vehicleC.Tag = "tag3";
-
-
-            vehicles.Add(vehicleA);
-            vehicles.Add(vehicleB);
-
-
-            controller.vehicles = vehicles;
-
-            //Act
-            _uut.CalculateSeparations(vehicles);
-            ISeparation seperation = controller.separations[0];
-
-
-            vehicles.RemoveAt(0);
-            vehicles.Add(vehicleC);
-            _uut.CalculateSeparations(vehicles);
-            
             //Assert
-            Assert.AreNotEqual(controller.separations[0],seperation);
-        }
-
-
-
-        [Test]
-        public void AbleToHandleNoVehicles_AddNoVehicles_NoExceptionIsThrown()
-        {
-            //Arrange
-
-            IController controller = new FakeATMController();
-            ISeparationDetector _uut = controller.separationDetector;
-            List<IVehicle> vehicles = new List<IVehicle>();
-            
-            controller.vehicles = vehicles;
-
-            //No Act
-
-
-
-            //Assert
-            Assert.DoesNotThrow(() => { _uut.CalculateSeparations(vehicles); });
+            Assert.DoesNotThrow(() => { _uut.CalculateSeparations(_vehicles); });
         }
 
         [Test]
         public void AbleToHandleOneVehicle_AddOneVehicles_NoExceptionIsThrown()
         {
-            //Arrange
 
-            IController controller = new FakeATMController();
-            ISeparationDetector _uut = controller.separationDetector;
-            List<IVehicle> vehicles = new List<IVehicle>();
-
-            controller.vehicles = vehicles;
-            
-            //No Act
+            //Act - Add one vehicle
             Airplane vehicleA = new Airplane();
             vehicleA.Altitude = 100;
             vehicleA.Xcoordinate = 100;
             vehicleA.Ycoordinate = 100;
 
-            vehicles.Add(vehicleA);
-            _uut.CalculateSeparations(vehicles);
-
+            _vehicles.Add(vehicleA);
+            
             //Assert
-            Assert.DoesNotThrow(() => { _uut.CalculateSeparations(vehicles); });
+            Assert.DoesNotThrow(() => { _uut.CalculateSeparations(_vehicles); });
         }
 
         [Test]
         public void AltitudeBoundaryExceeded_TwoVehiclesWithBoundaryEdge_NoSeperationIsDetected()
         {
-            //Arrange
-
-            IController controller = new FakeATMController();
-            ISeparationDetector _uut = controller.separationDetector;
-            List<IVehicle> vehicles = new List<IVehicle>();
-
-            controller.vehicles = vehicles;
-            
-            //Act
-            //Adding two not colliding airplanes
+            // Arrange
             Airplane vehicleA = new Airplane();
             vehicleA.Altitude = 100;
             vehicleA.Xcoordinate = 100;
@@ -246,12 +116,14 @@ namespace ATM.Unit.Test
             vehicleB.Ycoordinate = 100;
             vehicleB.Tag = "tag2";
 
-            vehicles.Add(vehicleA);
-            vehicles.Add(vehicleB);
-            _uut.CalculateSeparations(vehicles);
+            _vehicles.Add(vehicleA);
+            _vehicles.Add(vehicleB);
+
+            //Act
+            _uut.CalculateSeparations(_vehicles);
 
             //Assert
-            Assert.Null(controller.separations);
+            Assert.That(eventRaisedCount, Is.EqualTo(0));
         }
 
 
@@ -259,15 +131,6 @@ namespace ATM.Unit.Test
         public void AltitudeBoundaryWithin_TwoVehiclesWithBoundaryEdge_OneSeperationIsDetected()
         {
             //Arrange
-
-            IController controller = new FakeATMController();
-            ISeparationDetector _uut = controller.separationDetector;
-            List<IVehicle> vehicles = new List<IVehicle>();
-
-            controller.vehicles = vehicles;
-
-            //Act
-            //Adding two colliding airplanes
             Airplane vehicleA = new Airplane();
             vehicleA.Altitude = 100;
             vehicleA.Xcoordinate = 100;
@@ -280,27 +143,21 @@ namespace ATM.Unit.Test
             vehicleB.Ycoordinate = 100;
             vehicleB.Tag = "tag2";
 
-            vehicles.Add(vehicleA);
-            vehicles.Add(vehicleB);
-            _uut.CalculateSeparations(vehicles);
+            _vehicles.Add(vehicleA);
+            _vehicles.Add(vehicleB);
+
+            //Act
+            _uut.CalculateSeparations(_vehicles);
 
             //Assert
-            Assert.That(controller.separations.Count.Equals(1));
+            Assert.That(eventRaisedCount, Is.EqualTo(1));
         }
 
         [Test]
         public void LocationBoundaryWithin_TwoVehiclesWithBoundaryEdge_OneSeperationIsDetected()
         {
+
             //Arrange
-
-            IController controller = new FakeATMController();
-            ISeparationDetector _uut = controller.separationDetector;
-            List<IVehicle> vehicles = new List<IVehicle>();
-
-            controller.vehicles = vehicles;
-
-            //Act
-            //Adding two colliding airplanes
             Airplane vehicleA = new Airplane();
             vehicleA.Altitude = 100;
             vehicleA.Xcoordinate = 100;
@@ -312,13 +169,14 @@ namespace ATM.Unit.Test
             vehicleB.Xcoordinate = 100;
             vehicleB.Ycoordinate = 100;
             vehicleB.Tag = "tag2";
+            _vehicles.Add(vehicleA);
+            _vehicles.Add(vehicleB);
 
-            vehicles.Add(vehicleA);
-            vehicles.Add(vehicleB);
-            _uut.CalculateSeparations(vehicles);
+            //Act
+            _uut.CalculateSeparations(_vehicles);
 
             //Assert
-            Assert.That(controller.separations.Count.Equals(1));
+            Assert.That(eventRaisedCount, Is.EqualTo(1));
         }
 
 
@@ -326,15 +184,6 @@ namespace ATM.Unit.Test
         public void LocationBoundaryExceeded_TwoVehiclesWithBoundaryEdge_NoSeperationIsDetected()
         {
             //Arrange
-
-            IController controller = new FakeATMController();
-            ISeparationDetector _uut = controller.separationDetector;
-            List<IVehicle> vehicles = new List<IVehicle>();
-
-            controller.vehicles = vehicles;
-
-            //Act
-            //Adding two not colliding airplanes
             Airplane vehicleA = new Airplane();
             vehicleA.Altitude = 100;
             vehicleA.Xcoordinate = 100;
@@ -347,19 +196,19 @@ namespace ATM.Unit.Test
             vehicleB.Ycoordinate = 5100;
             vehicleB.Tag = "tag2";
 
-            vehicles.Add(vehicleA);
-            vehicles.Add(vehicleB);
-            _uut.CalculateSeparations(vehicles);
+            _vehicles.Add(vehicleA);
+            _vehicles.Add(vehicleB);
+
+            //Act
+            _uut.CalculateSeparations(_vehicles);
 
             //Assert
-            Assert.Null(controller.separations);
-        }*/
+            Assert.That(eventRaisedCount, Is.EqualTo(0));
+        }
 
 
     }
 
 }
-
-
 
 

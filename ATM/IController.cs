@@ -9,8 +9,8 @@ namespace ATM
     public interface IController
     {
 
-        List<IVehicle> vehicles { get; set; }
-        List<ISeparation> separations { get; set; }
+        //List<IVehicle> vehicles { get; set; }
+        //List<ISeparation> separations { get; set; }
 
         void Update(object source, SeparationChangedEventArgs args);
 

@@ -21,8 +21,8 @@ namespace ATM
 
         private IFileLogger _fileLogger;
 
-        public List<IVehicle> vehicles { get; set; }
-        public List<ISeparation> separations { get; set; }
+        private List<IVehicle> vehicles;
+        private List<ISeparation> separations;
 
 
 
