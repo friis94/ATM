@@ -14,6 +14,9 @@
       <FilterEntry>
 	<ModuleMask>ATM.Unit.Test</ModuleMask>
 	</FilterEntry>
+      <FilterEntry>
+	<ModuleMask>nunit.framework</ModuleMask>
+	</FilterEntry>
     </ExcludeFilters>
   </Filters>
   <!-- Attribute filters. It's possible to use asterisks as wildcard symbols.
