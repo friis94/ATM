@@ -14,16 +14,18 @@ namespace ATM.Application
         {
 
 
-            ITransponderReceiver _transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+            ITransponderReceiver transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
 
             // TODO: Fix Path
-            IFileWriter _writer = new FileWriter("C: DUMMY");
-            IFileLogger _fileLogger = new FileLogger(_writer);
+            IFileWriter writer = new FileWriter("C: DUMMY");
+            IFileLogger fileLogger = new FileLogger(writer);
 
-            IConsoleWriter _consoleWriter = new ConsoleWriter();
-            IConsoleLogger _consoleLogger = new ConsoleLogger(_consoleWriter);
+            IConsoleWriter consoleWriter = new ConsoleWriter();
+            IConsoleLogger consoleLogger = new ConsoleLogger(consoleWriter);
 
-            IController controller = new ATMController(_transponderReceiver, _fileLogger, _consoleLogger);
+            ISeparationDetector separationDetector = new SeparationDetector();
+
+            IController controller = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector);
             
             
             Console.ReadKey();

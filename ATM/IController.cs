@@ -12,7 +12,6 @@ namespace ATM
         List<IVehicle> vehicles { get; set; }
         List<ISeparation> separations { get; set; }
 
-        ISeparationDetector separationDetector { get; set; }
         void Update(object source, SeparationChangedEventArgs args);
 
         

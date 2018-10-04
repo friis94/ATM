@@ -20,17 +20,13 @@ namespace ATM
         private IConsoleLogger _consoleLogger;
 
         private IFileLogger _fileLogger;
-        
 
-    
-        
-        public ISeparationDetector separationDetector { get; set; }
         public List<IVehicle> vehicles { get; set; }
         public List<ISeparation> separations { get; set; }
 
 
 
-        public ATMController(ITransponderReceiver receiver, IFileLogger fileLogger, IConsoleLogger consoleLogger)
+        public ATMController(ITransponderReceiver receiver, IFileLogger fileLogger, IConsoleLogger consoleLogger, ISeparationDetector separationDetector)
         {
             // Decoder
             _decoder = new Decoder();
@@ -45,7 +41,7 @@ namespace ATM
             // Set vehicles list
             vehicles = new List<IVehicle>();
 
-            this._separationDetector = new SeparationDetector();
+            _separationDetector = separationDetector;
             _separationDetector.SeparationEvent += Update;
 
             // Console logger
