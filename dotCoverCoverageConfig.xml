@@ -11,12 +11,19 @@
   <!-- Coverage filters. It's possible to use asterisks as wildcard symbols. -->
   <Filters>
     <ExcludeFilters>
+			<FilterEntry>
+				<ModuleMask>ATM.Unit.Test</ModuleMask>
+      </FilterEntry>
       <FilterEntry>
-	<ModuleMask>ATM.Unit.Test</ModuleMask>
-	</FilterEntry>
-      <FilterEntry>
-	<ModuleMask>nunit.framework</ModuleMask>
-	</FilterEntry>
+				<ModuleMask>nunit.framework</ModuleMask>
+      </FilterEntry>
+	    <FilterEntry>
+				<ModuleMask>nunit.framework</ModuleMask>
+			</FilterEntry>
+			<FilterEntry>
+				<ModuleMask>ATM</ModuleMask>
+				<ClassMask>*Writer*</ClassMask>
+			</FilterEntry>
     </ExcludeFilters>
   </Filters>
   <!-- Attribute filters. It's possible to use asterisks as wildcard symbols.
