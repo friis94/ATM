@@ -70,9 +70,7 @@
   <ItemGroup>
     <Compile Include="AirspaceFilterUnitTest.cs" />
     <Compile Include="ATMControllerUnitTest.cs" />
-    <Compile Include="ATMUnitTest.cs" />
     <Compile Include="CourseCalculatorUnitTest.cs" />
-    <Compile Include="FakeATMController.cs" />
     <Compile Include="ConsoleLoggerUnitTest.cs" />
     <Compile Include="FakeTransponderReceiver.cs" />
     <Compile Include="FileLoggerUnitTests.cs" />
