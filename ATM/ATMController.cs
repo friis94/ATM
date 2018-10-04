@@ -17,7 +17,6 @@ namespace ATM
         private ICourseCalculator _courseCalculator;
         private IAirspaceFilter _airspaceFilter;
 
-        private IConsoleWriter _consoleWriter;
         private IConsoleLogger _consoleLogger;
 
         private IFileLogger _fileLogger;
@@ -31,7 +30,7 @@ namespace ATM
 
 
 
-        public ATMController(ITransponderReceiver receiver, IFileLogger fileLogger)
+        public ATMController(ITransponderReceiver receiver, IFileLogger fileLogger, IConsoleLogger consoleLogger)
         {
             // Decoder
             _decoder = new Decoder();
@@ -50,8 +49,7 @@ namespace ATM
             _separationDetector.SeparationEvent += Update;
 
             // Console logger
-            _consoleWriter = new ConsoleWriter();
-            _consoleLogger = new ConsoleLogger(_consoleWriter);
+            _consoleLogger = consoleLogger;
 
             // File logger
             _fileLogger = fileLogger;
@@ -68,6 +66,10 @@ namespace ATM
         public void Update(object source, SeparationChangedEventArgs args)
         {
             _consoleLogger.SetSeparations(args.separations);
+            foreach (var separation in args.separations)
+            {
+                _fileLogger.Log(separation);
+            }
         }
 
         public void NewTransponderData(object source, RawTransponderDataEventArgs data)

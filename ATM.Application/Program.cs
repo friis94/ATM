@@ -20,7 +20,10 @@ namespace ATM.Application
             IFileWriter _writer = new FileWriter("C: DUMMY");
             IFileLogger _fileLogger = new FileLogger(_writer);
 
-            IController controller = new ATMController(_transponderReceiver, _fileLogger);
+            IConsoleWriter _consoleWriter = new ConsoleWriter();
+            IConsoleLogger _consoleLogger = new ConsoleLogger(_consoleWriter);
+
+            IController controller = new ATMController(_transponderReceiver, _fileLogger, _consoleLogger);
             
             
             Console.ReadKey();
