@@ -25,9 +25,11 @@ namespace ATM.Unit.Test
             IConsoleLogger consoleLogger = Substitute.For<IConsoleLogger>();
 
             ISeparationDetector separationDetector  = new SeparationDetector();
+
+            ITrackDetector trackDetector = new TrackDetector(new Timer(5000), new Timer(5000));
              
             
-            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector);
+            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector);
             transponderReceiver.transpondCollidingAirplanes();
 
             fileLogger.Received().Log(Arg.Any<ISeparation>());
@@ -44,8 +46,9 @@ namespace ATM.Unit.Test
 
             ISeparationDetector separationDetector = new SeparationDetector();
 
+            ITrackDetector trackDetector = new TrackDetector(new Timer(5000), new Timer(5000));
 
-            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector);
+            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector);
             transponderReceiver.transpondNotCollidingAirplanes();
 
             fileLogger.DidNotReceive().Log(Arg.Any<ISeparation>());
@@ -62,7 +65,9 @@ namespace ATM.Unit.Test
 
             ISeparationDetector separationDetector = new SeparationDetector();
 
-            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector);
+            ITrackDetector trackDetector = new TrackDetector(new Timer(5000), new Timer(5000));
+
+            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector);
             transponderReceiver.transpondNotCollidingAirplanes();
 
             consoleLogger.Received().SetVehicles(Arg.Any<List<IVehicle>>());
@@ -79,7 +84,9 @@ namespace ATM.Unit.Test
 
             ISeparationDetector separationDetector = new SeparationDetector();
 
-            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector);
+            ITrackDetector trackDetector = new TrackDetector(new Timer(5000), new Timer(5000));
+
+            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector);
             transponderReceiver.transpondNoAirplanes();
 
             consoleLogger.DidNotReceive().SetVehicles(Arg.Any<List<IVehicle>>());

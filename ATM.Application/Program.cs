@@ -25,7 +25,9 @@ namespace ATM.Application
 
             ISeparationDetector separationDetector = new SeparationDetector();
 
-            IController controller = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector);
+            ITrackDetector trackDetector = new TrackDetector(new Timer(5000), new Timer(5000));
+
+            IController controller = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector);
             
             
             Console.ReadKey();

@@ -21,12 +21,14 @@ namespace ATM
 
         private IFileLogger _fileLogger;
 
+        private ITrackDetector _trackDetector;
+
         private List<IVehicle> vehicles;
         private List<ISeparation> separations;
 
 
 
-        public ATMController(ITransponderReceiver receiver, IFileLogger fileLogger, IConsoleLogger consoleLogger, ISeparationDetector separationDetector)
+        public ATMController(ITransponderReceiver receiver, IFileLogger fileLogger, IConsoleLogger consoleLogger, ISeparationDetector separationDetector, ITrackDetector trackDetector)
         {
             // Decoder
             _decoder = new Decoder();
@@ -43,6 +45,13 @@ namespace ATM
 
             _separationDetector = separationDetector;
             _separationDetector.SeparationEvent += Update;
+
+            //Set track detector
+            _trackDetector = trackDetector;
+            _trackDetector.EnterEvent += LogEnterTracks;
+            _trackDetector.ExitEvent += LogExitTracks;
+            _trackDetector.EnterEventRemove += RemoveEnterTracks;
+            _trackDetector.ExitEventRemove += RemoveExitTracks;
 
             // Console logger
             _consoleLogger = consoleLogger;
@@ -66,6 +75,26 @@ namespace ATM
             {
                 _fileLogger.Log(separation);
             }
+        }
+
+        public void LogEnterTracks(object source, TrackEventArgs args)
+        {
+            //Log the entered vehicles
+        }
+
+        public void LogExitTracks(object source, TrackEventArgs args)
+        {
+            //Log the exited vehicles
+        }
+
+        public void RemoveExitTracks(object source, EventArgs args)
+        {
+            //Remove the exited vehicles
+        }
+
+        public void RemoveEnterTracks(object source, EventArgs args)
+        {
+            //Remove the entered vehicles
         }
 
         public void NewTransponderData(object source, RawTransponderDataEventArgs data)
