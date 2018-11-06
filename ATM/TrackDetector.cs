@@ -14,13 +14,13 @@ namespace ATM
         public event EventHandler EnterEventRemove;
         public event EventHandler<TrackEventArgs> ExitEvent;
         public event EventHandler ExitEventRemove;
-        private TrackEventArgs args;
+        private TrackEventArgs args = new TrackEventArgs();
         private List<IVehicle> _newVehicles;
         private List<IVehicle> _oldVehicles;
         private ITimer _enterTimer;
         private ITimer _exitTimer;
-        private List<IVehicle> VehichlesEntered;
-        private List<IVehicle> VehichlesExited;
+        private List<IVehicle> VehichlesEntered = new List<IVehicle>();
+        private List<IVehicle> VehichlesExited = new List<IVehicle>();
 
         public TrackDetector(ITimer enterTimer, ITimer exitTimer)
         {
@@ -39,8 +39,10 @@ namespace ATM
 
             if (VehichlesExited.Count > 0)
             {
+
                 args.tracks = VehichlesExited;
                 ExitEvent?.Invoke(this, args);
+                _exitTimer = new Timer(5000);
                 _exitTimer.Start();
 
             }
@@ -48,7 +50,8 @@ namespace ATM
             {
                 args.tracks = VehichlesEntered;
                 EnterEvent?.Invoke(this, args);
-                _exitTimer.Start();
+                _enterTimer = new Timer(5000);
+                _enterTimer.Start();
             }
 
         }
@@ -56,11 +59,13 @@ namespace ATM
         public void LogEnteredVehichles(object source, EventArgs timerArgs)
         {
             EnterEventRemove?.Invoke(this, EventArgs.Empty);
+            
         }
 
         public void LogExitedVehichles(object source, EventArgs timerArgs)
         {
             ExitEventRemove?.Invoke(this, EventArgs.Empty);
+            
         }
 
 

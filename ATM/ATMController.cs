@@ -80,21 +80,26 @@ namespace ATM
         public void LogEnterTracks(object source, TrackEventArgs args)
         {
             //Log the entered vehicles
+            Console.WriteLine("TestEnter");
+            
         }
 
         public void LogExitTracks(object source, TrackEventArgs args)
         {
             //Log the exited vehicles
+            //Console.WriteLine("TestExit");
         }
 
         public void RemoveExitTracks(object source, EventArgs args)
         {
             //Remove the exited vehicles
+            //Console.WriteLine("TestRemoveExit");
         }
 
         public void RemoveEnterTracks(object source, EventArgs args)
         {
             //Remove the entered vehicles
+            Console.WriteLine("TestRemoveEnter");
         }
 
         public void NewTransponderData(object source, RawTransponderDataEventArgs data)
@@ -109,6 +114,10 @@ namespace ATM
 
             if (newVehicles.Count > 0)
             {
+
+                // Track detections to log
+                _trackDetector.LogTracks(newVehicles, vehicles);
+
                 // Calculate course
                 vehicles = _courseCalculator.CalculateCourse(newVehicles, vehicles);
 
@@ -117,6 +126,8 @@ namespace ATM
 
                 // Look for separations
                 _separationDetector.CalculateSeparations(vehicles);
+
+                
             }
             else
             {
