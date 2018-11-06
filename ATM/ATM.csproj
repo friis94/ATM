@@ -63,11 +63,15 @@
     <Compile Include="IFileWriter.cs" />
     <Compile Include="ISeparation.cs" />
     <Compile Include="ISeparationDetector.cs" />
+    <Compile Include="ITimer.cs" />
+    <Compile Include="ITrackDetector.cs" />
     <Compile Include="IVehicle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Separation.cs" />
     <Compile Include="SeparationDetector.cs" />
+    <Compile Include="Timer.cs" />
+    <Compile Include="TrackDetector.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
