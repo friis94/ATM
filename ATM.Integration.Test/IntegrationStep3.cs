@@ -8,11 +8,11 @@ using TransponderReceiver;
 namespace ATM.Integration.Test
 {
     [TestClass]
-    public class IntegrationStep2
+    public class IntegrationStep3
     {
 
         [TestMethod]
-        public void IntegrationTestAirspaceFilter()
+        public void IntegrationTestCourseCalculator()
         {
             /*
              * ARRANGE
@@ -20,21 +20,18 @@ namespace ATM.Integration.Test
 
             IDecoder decoder = new Decoder();
             IAirspaceFilter airspaceFilter = new AirspaceFilter();
+            ICourseCalculator courseCalculator = new CourseCalculator();
 
             // Fake transponder receiver to generate data
             FakeTransponderReceiver fakeTransponderReceiver = new FakeTransponderReceiver();
 
             // Stub to assert on
-            ICourseCalculator courseCalculator = Substitute.For<ICourseCalculator>();
-            courseCalculator.CalculateCourse(Arg.Any<List<IVehicle>>(), Arg.Any<List<IVehicle>>()).Returns(new List<IVehicle>());
-
-
+            ITrackDetector trackDetector = Substitute.For<ITrackDetector>();
+          
             // Needed to create ATMController
             ISeparationDetector separationDetector = new SeparationDetector();
-            ITrackDetector trackDetector = Substitute.For<ITrackDetector>();
             IConsoleLogger consoleLogger = Substitute.For<IConsoleLogger>();
             IFileLogger fileLogger = Substitute.For<IFileLogger>();
-            
 
             IController controller = new ATMController(fakeTransponderReceiver, fileLogger, consoleLogger,
                 separationDetector, trackDetector, airspaceFilter, courseCalculator);
@@ -47,7 +44,7 @@ namespace ATM.Integration.Test
             /*
              * Assert
              */
-            courseCalculator.Received().CalculateCourse(Arg.Any<List<IVehicle>>(), Arg.Any<List<IVehicle>>());
+            trackDetector.Received().LogTracks(Arg.Any<List<IVehicle>>(), Arg.Any<List<IVehicle>>());
 
         }
     }
