@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface ICourseCalculator
+    public interface ICourseCalculator
     {
         List<IVehicle> CalculateCourse(List<IVehicle> newVehicles, List<IVehicle> oldVehicles);
     }

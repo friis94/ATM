@@ -28,16 +28,18 @@ namespace ATM
 
 
 
-        public ATMController(ITransponderReceiver receiver, IFileLogger fileLogger, IConsoleLogger consoleLogger, ISeparationDetector separationDetector, ITrackDetector trackDetector)
+        
+
+        public ATMController(ITransponderReceiver receiver, IFileLogger fileLogger, IConsoleLogger consoleLogger, ISeparationDetector separationDetector, ITrackDetector trackDetector, IAirspaceFilter airspaceFilter, ICourseCalculator courseCalculator)
         {
             // Decoder
             _decoder = new Decoder();
 
             // Course calculator
-            _courseCalculator = new CourseCalculator();
+            _courseCalculator = courseCalculator;
 
             // Airspace Filter
-            _airspaceFilter = new AirspaceFilter();
+            _airspaceFilter = airspaceFilter;
             _airspaceFilter.SetAirSpace(10000, 90000, 10000, 90000, 500, 20000);
 
             // Set vehicles list

@@ -27,7 +27,11 @@ namespace ATM.Application
 
             ITrackDetector trackDetector = new TrackDetector(new Timer(5000), new Timer(5000));
 
-            IController controller = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector);
+            IAirspaceFilter airspaceFilter = new AirspaceFilter();
+
+            ICourseCalculator courseCalculator = new CourseCalculator();
+
+            IController controller = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
             
             
             Console.ReadKey();
