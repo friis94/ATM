@@ -89,13 +89,13 @@ namespace ATM
         public void LogExitTracks(object source, TrackEventArgs args)
         {
             //Log the exited vehicles
-            //Console.WriteLine("TestExit");
+            Console.WriteLine("TestExit");
         }
 
         public void RemoveExitTracks(object source, EventArgs args)
         {
             //Remove the exited vehicles
-            //Console.WriteLine("TestRemoveExit");
+            Console.WriteLine("TestRemoveExit");
         }
 
         public void RemoveEnterTracks(object source, EventArgs args)

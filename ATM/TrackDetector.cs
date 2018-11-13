@@ -17,18 +17,10 @@ namespace ATM
         private TrackEventArgs args = new TrackEventArgs();
         private List<IVehicle> _newVehicles;
         private List<IVehicle> _oldVehicles;
-        private ITimer _enterTimer;
-        private ITimer _exitTimer;
+
         private List<IVehicle> VehichlesEntered = new List<IVehicle>();
         private List<IVehicle> VehichlesExited = new List<IVehicle>();
 
-        public TrackDetector(ITimer enterTimer, ITimer exitTimer)
-        {
-            _enterTimer = enterTimer;
-            _exitTimer = exitTimer;
-            _enterTimer.Expired += new EventHandler(LogEnteredVehichles);
-            _exitTimer.Expired += new EventHandler(LogExitedVehichles);
-        }
 
         public void LogTracks(List<IVehicle> NewVehicles, List<IVehicle> OldVehicles)
         {
@@ -40,17 +32,22 @@ namespace ATM
             if (VehichlesExited.Count > 0)
             {
 
+
+                ITimer _exitTimer = new Timer(5000);
+                _exitTimer.Expired += new EventHandler(LogExitedVehichles);
                 args.tracks = VehichlesExited;
                 ExitEvent?.Invoke(this, args);
-                _exitTimer = new Timer(5000);
+                //_exitTimer = new Timer(5000);
                 _exitTimer.Start();
 
             }
             if (VehichlesEntered.Count > 0)
             {
+                ITimer _enterTimer = new Timer(5000);
+                _enterTimer.Expired += new EventHandler(LogEnteredVehichles);
                 args.tracks = VehichlesEntered;
                 EnterEvent?.Invoke(this, args);
-                _enterTimer = new Timer(5000);
+                //_enterTimer = new Timer(5000);
                 _enterTimer.Start();
             }
 
@@ -59,6 +56,7 @@ namespace ATM
         public void LogEnteredVehichles(object source, EventArgs timerArgs)
         {
             EnterEventRemove?.Invoke(this, EventArgs.Empty);
+            
             
         }
 
@@ -74,10 +72,24 @@ namespace ATM
         {
             VehichlesEntered = new List<IVehicle>();
             VehichlesExited = new List<IVehicle>();
+
+            List<String> _newVehiclesTags = new List<string>();
+            List<String> _oldVehiclesTags = new List<string>();
+
+            foreach (var vehicle in _newVehicles)
+            {
+                _newVehiclesTags.Add(vehicle.Tag);
+            }
+            foreach (var vehicle in _oldVehicles)
+            {
+                _oldVehiclesTags.Add(vehicle.Tag);
+            }
+
             //Find vehicles entered
             for (int i = 0; i < _newVehicles.Count; i++)
             {
-                if (!_oldVehicles.Contains(_newVehicles[i]))
+                
+                if (!_oldVehiclesTags.Contains(_newVehiclesTags[i]))
                 {
                     VehichlesEntered.Add(_newVehicles[i]);
                 }
@@ -86,7 +98,7 @@ namespace ATM
             //Find vehicles exited
             for (int i = 0; i < _oldVehicles.Count; i++)
             {
-                if (!_newVehicles.Contains(_oldVehicles[i]))
+                if (!_newVehiclesTags.Contains(_oldVehiclesTags[i]))
                 {
                     VehichlesExited.Add(_oldVehicles[i]);
                 }

@@ -37,8 +37,8 @@ namespace ATM
 
         private void Expire()
         {
-            timer.Enabled = false;
             Expired?.Invoke(this, System.EventArgs.Empty);
+            timer.Enabled = false;
         }
 
         private void OnTimerEvent(object sender, System.Timers.ElapsedEventArgs args)

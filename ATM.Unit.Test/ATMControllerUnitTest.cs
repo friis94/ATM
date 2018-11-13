@@ -26,7 +26,7 @@ namespace ATM.Unit.Test
 
             ISeparationDetector separationDetector  = new SeparationDetector();
 
-            ITrackDetector trackDetector = new TrackDetector(new Timer(5000), new Timer(5000));
+            ITrackDetector trackDetector = new TrackDetector();
              
             IAirspaceFilter airspaceFilter = new AirspaceFilter();
 
@@ -49,7 +49,7 @@ namespace ATM.Unit.Test
 
             ISeparationDetector separationDetector = new SeparationDetector();
 
-            ITrackDetector trackDetector = new TrackDetector(new Timer(5000), new Timer(5000));
+            ITrackDetector trackDetector = new TrackDetector();
 
             IAirspaceFilter airspaceFilter = new AirspaceFilter();
 
@@ -72,7 +72,7 @@ namespace ATM.Unit.Test
 
             ISeparationDetector separationDetector = new SeparationDetector();
 
-            ITrackDetector trackDetector = new TrackDetector(new Timer(5000), new Timer(5000));
+            ITrackDetector trackDetector = new TrackDetector();
 
             IAirspaceFilter airspaceFilter = new AirspaceFilter();
 
@@ -95,7 +95,7 @@ namespace ATM.Unit.Test
 
             ISeparationDetector separationDetector = new SeparationDetector();
 
-            ITrackDetector trackDetector = new TrackDetector(new Timer(5000), new Timer(5000));
+            ITrackDetector trackDetector = new TrackDetector();
 
             IAirspaceFilter airspaceFilter = new AirspaceFilter();
 
