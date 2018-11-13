@@ -28,8 +28,11 @@ namespace ATM.Unit.Test
 
             ITrackDetector trackDetector = new TrackDetector();
              
+            IAirspaceFilter airspaceFilter = new AirspaceFilter();
+
+            ICourseCalculator courseCalculator = new CourseCalculator();
             
-            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector);
+            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
             transponderReceiver.transpondCollidingAirplanes();
 
             fileLogger.Received().Log(Arg.Any<ISeparation>());
@@ -48,7 +51,11 @@ namespace ATM.Unit.Test
 
             ITrackDetector trackDetector = new TrackDetector();
 
-            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector);
+            IAirspaceFilter airspaceFilter = new AirspaceFilter();
+
+            ICourseCalculator courseCalculator = new CourseCalculator();
+
+            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
             transponderReceiver.transpondNotCollidingAirplanes();
 
             fileLogger.DidNotReceive().Log(Arg.Any<ISeparation>());
@@ -67,7 +74,11 @@ namespace ATM.Unit.Test
 
             ITrackDetector trackDetector = new TrackDetector();
 
-            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector);
+            IAirspaceFilter airspaceFilter = new AirspaceFilter();
+
+            ICourseCalculator courseCalculator = new CourseCalculator();
+
+            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
             transponderReceiver.transpondNotCollidingAirplanes();
 
             consoleLogger.Received().SetVehicles(Arg.Any<List<IVehicle>>());
@@ -86,7 +97,11 @@ namespace ATM.Unit.Test
 
             ITrackDetector trackDetector = new TrackDetector();
 
-            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector);
+            IAirspaceFilter airspaceFilter = new AirspaceFilter();
+
+            ICourseCalculator courseCalculator = new CourseCalculator();
+
+            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
             transponderReceiver.transpondNoAirplanes();
 
             consoleLogger.DidNotReceive().SetVehicles(Arg.Any<List<IVehicle>>());
