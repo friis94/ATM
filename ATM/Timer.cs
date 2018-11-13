@@ -11,15 +11,19 @@ namespace ATM
     {
         public int TimeRemaining { get; private set; }
 
-        public event EventHandler Expired;
+        public event EventHandler<TrackEventArgs> Expired;
 
         private System.Timers.Timer timer;
 
-        public Timer(int time)
+        private TrackEventArgs args = new TrackEventArgs();
+
+        public Timer(int time, List<IVehicle> vehicles)
         {
+            args.tracks = vehicles;
+
             timer = new System.Timers.Timer();
             // Bind OnTimerEvent with an object of this, and set up the event
-            timer.Elapsed += new System.Timers.ElapsedEventHandler(OnTimerEvent);
+            timer.Elapsed += (sender, e) => OnTimerEvent(sender, args);
             timer.Interval = time;
             timer.AutoReset = false;
         }
@@ -35,15 +39,10 @@ namespace ATM
             timer.Enabled = false;
         }
 
-        private void Expire()
+        private void OnTimerEvent(object sender, TrackEventArgs args)
         {
-            Expired?.Invoke(this, System.EventArgs.Empty);
+            Expired?.Invoke(this, args);
             timer.Enabled = false;
-        }
-
-        private void OnTimerEvent(object sender, System.Timers.ElapsedEventArgs args)
-        {
-            Expire();
         }
 
     }

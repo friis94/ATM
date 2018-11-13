@@ -17,8 +17,8 @@ namespace ATM
     {
         event EventHandler<TrackEventArgs> EnterEvent;
         event EventHandler<TrackEventArgs> ExitEvent;
-        event EventHandler ExitEventRemove;
-        event EventHandler EnterEventRemove;
+        event EventHandler<TrackEventArgs> ExitEventRemove;
+        event EventHandler<TrackEventArgs> EnterEventRemove;
 
         void LogTracks(List<IVehicle> NewVehicles, List<IVehicle> OldVehicles);
 
