@@ -26,7 +26,7 @@ namespace ATM.Unit.Test
 
             ISeparationDetector separationDetector  = new SeparationDetector();
 
-            ITrackDetector trackDetector = new TrackDetector(new Timer(5000), new Timer(5000));
+            ITrackDetector trackDetector = new TrackDetector();
              
             
             ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector);
@@ -46,7 +46,7 @@ namespace ATM.Unit.Test
 
             ISeparationDetector separationDetector = new SeparationDetector();
 
-            ITrackDetector trackDetector = new TrackDetector(new Timer(5000), new Timer(5000));
+            ITrackDetector trackDetector = new TrackDetector();
 
             ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector);
             transponderReceiver.transpondNotCollidingAirplanes();
@@ -65,7 +65,7 @@ namespace ATM.Unit.Test
 
             ISeparationDetector separationDetector = new SeparationDetector();
 
-            ITrackDetector trackDetector = new TrackDetector(new Timer(5000), new Timer(5000));
+            ITrackDetector trackDetector = new TrackDetector();
 
             ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector);
             transponderReceiver.transpondNotCollidingAirplanes();
@@ -84,7 +84,7 @@ namespace ATM.Unit.Test
 
             ISeparationDetector separationDetector = new SeparationDetector();
 
-            ITrackDetector trackDetector = new TrackDetector(new Timer(5000), new Timer(5000));
+            ITrackDetector trackDetector = new TrackDetector();
 
             ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector);
             transponderReceiver.transpondNoAirplanes();
