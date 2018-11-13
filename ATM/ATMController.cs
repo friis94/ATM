@@ -26,6 +26,9 @@ namespace ATM
         private List<IVehicle> vehicles;
         private List<ISeparation> separations;
 
+        private List<IVehicle> vehiclesEnter = new List<IVehicle>();
+        private List<IVehicle> vehiclesExit = new List<IVehicle>();
+
 
 
         public ATMController(ITransponderReceiver receiver, IFileLogger fileLogger, IConsoleLogger consoleLogger, ISeparationDetector separationDetector, ITrackDetector trackDetector)
@@ -80,26 +83,32 @@ namespace ATM
         public void LogEnterTracks(object source, TrackEventArgs args)
         {
             //Log the entered vehicles
-            Console.WriteLine("TestEnter");
-            
+            vehiclesEnter.AddRange(args.tracks);
+      
+        }
+
+        public void RemoveEnterTracks(object source, TrackEventArgs args)
+        {
+            //Remove the entered vehicles
+            foreach (var vehicle in args.tracks)
+            {
+                vehiclesEnter.Remove(vehicle);
+            }
         }
 
         public void LogExitTracks(object source, TrackEventArgs args)
         {
             //Log the exited vehicles
-            Console.WriteLine("TestExit");
+            vehiclesExit.AddRange(args.tracks);
         }
 
-        public void RemoveExitTracks(object source, EventArgs args)
+        public void RemoveExitTracks(object source, TrackEventArgs args)
         {
             //Remove the exited vehicles
-            Console.WriteLine("TestRemoveExit");
-        }
-
-        public void RemoveEnterTracks(object source, EventArgs args)
-        {
-            //Remove the entered vehicles
-            Console.WriteLine("TestRemoveEnter");
+            foreach (var vehicle in args.tracks)
+            {
+                vehiclesExit.Remove(vehicle);
+            }
         }
 
         public void NewTransponderData(object source, RawTransponderDataEventArgs data)
