@@ -135,6 +135,10 @@ namespace ATM
                 // Log to the console
                 _consoleLogger.SetVehicles(vehicles);
 
+                _consoleLogger.SetEnterTracks(vehiclesEnter);
+
+                _consoleLogger.SetExitTracks(vehiclesExit);
+
                 // Look for separations
                 _separationDetector.CalculateSeparations(vehicles);
 

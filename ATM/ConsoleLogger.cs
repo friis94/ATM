@@ -33,11 +33,41 @@ namespace ATM
             _writer.WriteLine(" ------------------------------- Airplanes in the airspace -------------------------------");
             foreach (var v in vehicles)
             {
-                string timeStampString = v.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
                 _writer.WriteLine($"{v.Tag} , Coordinate(x, y): ({v.Xcoordinate}, {v.Ycoordinate}), Altitude: {v.Altitude}, Velocity: {v.velocity}, Compass course: {v.course}");
             }
 
             _writer.WriteLine("------------------------------------------------------------------------------------------");
+        }
+
+        public void SetEnterTracks(List<IVehicle> vehicles)
+        {
+            if (vehicles.Count > 0)
+            {
+                _writer.WriteLine(" ------------------------------- Airplanes Entered airspace -------------------------------");
+                foreach (var v in vehicles)
+                {
+                    string timeStampString = v.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                    _writer.WriteLine($"{v.Tag} at time @ {timeStampString}");
+
+                }
+                _writer.WriteLine("------------------------------------------------------------------------------------------");
+            }
+        }
+
+        public void SetExitTracks(List<IVehicle> vehicles)
+        {
+            if (vehicles.Count > 0)
+            {
+                _writer.WriteLine(" ------------------------------- Airplanes Entered airspace -------------------------------");
+                foreach (var v in vehicles)
+                {
+                    string timeStampString =
+                        v.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                    _writer.WriteLine($"{v.Tag} at time @ {timeStampString}");
+
+                }
+                _writer.WriteLine("------------------------------------------------------------------------------------------");
+            }
         }
 
         public void ClearConsole()
