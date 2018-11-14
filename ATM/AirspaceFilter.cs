@@ -28,6 +28,11 @@ namespace ATM
 
         public List<IVehicle> FilterVehicles(List<IVehicle> vehicles)
         {
+            if (vehicles == null)
+            {
+                throw new ArgumentNullException("vehicles");
+            }
+
             for (int i = vehicles.Count-1; i >= 0; i--)
             {
                 IVehicle vehicle = vehicles[i];
