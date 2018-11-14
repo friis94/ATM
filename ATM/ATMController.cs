@@ -74,6 +74,12 @@ namespace ATM
 
         public void Update(object source, SeparationChangedEventArgs args)
         {
+
+            if (args == null)
+            {
+                throw new ArgumentNullException("args");
+            }
+
             _consoleLogger.SetSeparations(args.Separations);
             foreach (var separation in args.Separations)
             {
@@ -83,6 +89,11 @@ namespace ATM
 
         public void LogEnterTracks(object source, TrackEventArgs args)
         {
+            if (args == null)
+            {
+                throw new ArgumentNullException("args");
+            }
+
             //Log the entered _vehicles
             vehiclesEnter.AddRange(args.Tracks);
       
@@ -90,6 +101,11 @@ namespace ATM
 
         public void RemoveEnterTracks(object source, TrackEventArgs args)
         {
+            if (args == null)
+            {
+                throw new ArgumentNullException("args");
+            }
+
             //Remove the entered _vehicles
             foreach (var vehicle in args.Tracks)
             {
@@ -99,12 +115,22 @@ namespace ATM
 
         public void LogExitTracks(object source, TrackEventArgs args)
         {
+            if (args == null)
+            {
+                throw new ArgumentNullException("args");
+            }
+
             //Log the exited _vehicles
             vehiclesExit.AddRange(args.Tracks);
         }
 
         public void RemoveExitTracks(object source, TrackEventArgs args)
         {
+            if (args == null)
+            {
+                throw new ArgumentNullException("args");
+            }
+
             //Remove the exited _vehicles
             foreach (var vehicle in args.Tracks)
             {
