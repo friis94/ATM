@@ -32,7 +32,7 @@ namespace ATM
         {
             if (receiver == null || fileLogger == null || consoleLogger == null || separationDetector == null || trackDetector == null || airspaceFilter == null || courseCalculator == null)
             {
-                throw new ArgumentNullException("atm controller depepdency injection.");
+                throw new ArgumentNullException("receiver");
             }
             // Decoder
             _decoder = new Decoder();
