@@ -43,7 +43,7 @@ namespace ATM.Integration.Test
             /*
              * Assert
              */
-            trackDetector.Received().LogTracks(Arg.Any<List<IVehicle>>(), Arg.Any<List<IVehicle>>());
+            trackDetector.Received().Update(Arg.Any<List<IVehicle>>(), Arg.Any<List<IVehicle>>());
 
         }
     }
