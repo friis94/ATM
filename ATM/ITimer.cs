@@ -11,6 +11,5 @@ namespace ATM
         event EventHandler<TrackEventArgs> Expired;
 
         void Start();
-        void Stop();
     }
 }

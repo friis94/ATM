@@ -32,10 +32,6 @@ namespace ATM
             timer.Enabled = true;
         }
 
-        public void Stop()
-        {
-            timer.Enabled = false;
-        }
 
         private void OnTimerEvent(object sender, TrackEventArgs args)
         {

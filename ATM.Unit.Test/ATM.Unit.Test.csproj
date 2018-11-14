@@ -78,6 +78,7 @@
     <Compile Include="DecoderUnitTest.cs" />
     <Compile Include="SeparationDetectorUnitTest.cs" />
     <Compile Include="TimerUnitTest.cs" />
+    <Compile Include="TrackDetectorUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

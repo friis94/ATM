@@ -27,27 +27,24 @@ namespace ATM
             this._newVehicles = NewVehicles;
             this._oldVehicles = OldVehicles;
 
-            FilterVehichles();
+            FilterVehicles();
 
             if (VehichlesExited.Count > 0)
             {
-
-
                 ITimer _exitTimer = new Timer(5000, VehichlesExited);
                 _exitTimer.Expired += new EventHandler<TrackEventArgs>(LogExitedVehicles);
                 args.tracks = VehichlesExited;
                 ExitEvent?.Invoke(this, args);
-                //_exitTimer = new Timer(5000);
                 _exitTimer.Start();
 
             }
+
             if (VehichlesEntered.Count > 0)
             {
                 ITimer _enterTimer = new Timer(5000, VehichlesEntered);
                 _enterTimer.Expired += new EventHandler<TrackEventArgs>(LogEnteredVehicles);
                 args.tracks = VehichlesEntered;
                 EnterEvent?.Invoke(this, args);
-                //_enterTimer = new Timer(5000);
                 _enterTimer.Start();
             }
 
@@ -68,7 +65,7 @@ namespace ATM
 
 
 
-        public void FilterVehichles()
+        public void FilterVehicles()
         {
             VehichlesEntered = new List<IVehicle>();
             VehichlesExited = new List<IVehicle>();

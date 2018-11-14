@@ -30,8 +30,6 @@ namespace ATM.Unit.Test
 
             // wait for expiration, but not much longer, should come
             Assert.That(pause.WaitOne(5001));
-
-            uut.Stop();
         }
 
         [Test]
@@ -44,8 +42,6 @@ namespace ATM.Unit.Test
 
 
             Assert.That(!pause.WaitOne(4900));
-
-            uut.Stop();
         }
     }
 }
