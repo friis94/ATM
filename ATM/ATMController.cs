@@ -24,7 +24,6 @@ namespace ATM
         private ITrackDetector _trackDetector;
 
         private List<IVehicle> vehicles;
-        private List<ISeparation> separations;
 
         private List<IVehicle> vehiclesEnter = new List<IVehicle>();
         private List<IVehicle> vehiclesExit = new List<IVehicle>();
