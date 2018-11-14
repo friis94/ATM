@@ -26,6 +26,7 @@ namespace ATM
 
             // Log to txt file
             _fileWriter.WriteLine($"[Separation Event] between {separation.VehicleA.Tag} and {separation.VehicleB.Tag} @ {dateTimeString}");
+            _fileWriter.WriteLine(String.Format(CultureInfo.CurrentCulture,"[Separation Event] between {0} and {1} @ {2}", separation.VehicleA.Tag, separation.VehicleB.Tag, dateTimeString));
         }
     }
 }
