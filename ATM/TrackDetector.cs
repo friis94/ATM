@@ -65,7 +65,7 @@ namespace ATM
 
 
 
-        public void FilterVehicles()
+        private void FilterVehicles()
         {
             VehichlesEntered = new List<IVehicle>();
             VehichlesExited = new List<IVehicle>();

@@ -22,7 +22,7 @@ namespace ATM
         public void Log(ISeparation separation)
         {
             // Format date and time
-            var dateTimeString = separation.TimeStamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
+            var dateTimeString = separation.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
 
             // Log to txt file
             _fileWriter.WriteLine($"[Separation Event] between {separation.VehicleA.Tag} and {separation.VehicleB.Tag} @ {dateTimeString}");
