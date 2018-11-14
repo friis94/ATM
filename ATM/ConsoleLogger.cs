@@ -22,7 +22,7 @@ namespace ATM
             foreach (var s in separations)
             {
                 string timeStampString = s.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
-                _writer.WriteLine($"Separation between {s.VehicleA.Tag} and {s.VehicleB.Tag} @ {timeStampString}");
+                _writer.WriteLine(String.Format(CultureInfo.CurrentCulture, "Separation between {0} and {1} @ {2}", s.VehicleA.Tag, s.VehicleB.Tag, timeStampString));
             }
 
             _writer.WriteLine("------------------------------------------------------------------------------------------");
