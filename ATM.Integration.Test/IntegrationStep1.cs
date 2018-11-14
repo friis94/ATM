@@ -4,10 +4,11 @@ using ATM.Unit.Test;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using TransponderReceiver;
+using NUnit.Framework;
 
 namespace ATM.Integration.Test
 {
-    [TestClass]
+    [TestFixture]
     public class IntegrationStep1
     {
 
