@@ -33,7 +33,7 @@ namespace ATM
             _writer.WriteLine(" ------------------------------- Airplanes in the airspace -------------------------------");
             foreach (var v in vehicles)
             {
-                _writer.WriteLine($"{v.Tag} , Coordinate(x, y): ({v.XCoordinate}, {v.YCoordinate}), Altitude: {v.Altitude}, Velocity: {v.Velocity}, Compass Course: {v.Course}");
+                _writer.WriteLine(String.Format(CultureInfo.CurrentCulture, "{0} , Coordinate(x, y): ({1}, {2}), Altitude: {3}, Velocity: {4}, Compass Course: {5}", v.Tag, v.XCoordinate, v.YCoordinate, v.Altitude, v.Velocity, v.Course));
             }
 
             _writer.WriteLine("------------------------------------------------------------------------------------------");
@@ -45,8 +45,7 @@ namespace ATM
                 foreach (var v in vehicles)
                 {
                     string timeStampString = v.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
-                    _writer.WriteLine($"{v.Tag} at time @ {timeStampString}");
-
+                    _writer.WriteLine(String.Format(CultureInfo.CurrentCulture, "{0} at time @ {1}", v.Tag, timeStampString));
                 }
                 _writer.WriteLine("------------------------------------------------------------------------------------------");
         }
@@ -60,7 +59,7 @@ namespace ATM
                 {
                     string timeStampString =
                         v.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
-                    _writer.WriteLine($"{v.Tag} at time @ {timeStampString}");
+                    _writer.WriteLine(String.Format(CultureInfo.CurrentCulture, "{0} at time @ {1}", v.Tag, timeStampString));
 
                 }
                 _writer.WriteLine("------------------------------------------------------------------------------------------");
