@@ -40,9 +40,7 @@ namespace ATM
         }
 
         public void SetEnterTracks(List<IVehicle> vehicles)
-        {
-            if (vehicles.Count > 0)
-            {
+        {   
                 _writer.WriteLine(" ------------------------------- Airplanes Entered airspace -------------------------------");
                 foreach (var v in vehicles)
                 {
@@ -51,7 +49,6 @@ namespace ATM
 
                 }
                 _writer.WriteLine("------------------------------------------------------------------------------------------");
-            }
         }
 
         public void SetExitTracks(List<IVehicle> vehicles)

@@ -120,6 +120,39 @@ namespace ATM.Unit.Test
         }
 
         [Test]
+        public void ConsoleLogger_SetExitTracks()
+        {
+
+
+            IConsoleWriter writer = Substitute.For<IConsoleWriter>();
+            ConsoleLogger uut = new ConsoleLogger(writer);
+
+            // Separation event between to airplanes
+            IVehicle airplaneA = new Airplane();
+            IVehicle airplaneB = new Airplane();
+            airplaneA.Tag = "Airplane A";
+            airplaneB.Tag = "Airplane B";
+            DateTime dt = DateTime.Parse("2000/12/24 18:00:10");
+            airplaneA.Timestamp = dt;
+            airplaneB.Timestamp = dt;
+
+            List<IVehicle> airplanes = new List<IVehicle>();
+
+            airplanes.Add(airplaneA);
+            airplanes.Add(airplaneB);
+
+            uut.SetExitTracks(airplanes);
+
+            Received.InOrder(() =>
+            {
+                writer.WriteLine(" ------------------------------- Airplanes Entered airspace -------------------------------");
+                writer.WriteLine($"{airplaneA.Tag} at time @ 2000-12-24 18:00:10.000");
+                writer.WriteLine($"{airplaneB.Tag} at time @ 2000-12-24 18:00:10.000");
+                writer.WriteLine("------------------------------------------------------------------------------------------");
+            });
+        }
+
+        [Test]
         public void ConsoleLogger_ClearConsole()
         {
             IConsoleWriter writer = Substitute.For<IConsoleWriter>();
