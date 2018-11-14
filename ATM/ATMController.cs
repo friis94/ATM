@@ -30,6 +30,10 @@ namespace ATM
 
         public AtmController(ITransponderReceiver receiver, IFileLogger fileLogger, IConsoleLogger consoleLogger, ISeparationDetector separationDetector, ITrackDetector trackDetector, IAirspaceFilter airspaceFilter, ICourseCalculator courseCalculator)
         {
+            if (receiver == null || fileLogger == null || consoleLogger == null || separationDetector == null || trackDetector == null || airspaceFilter == null || courseCalculator == null)
+            {
+                throw new ArgumentNullException("atm controller depepdency injection.");
+            }
             // Decoder
             _decoder = new Decoder();
 
