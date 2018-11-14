@@ -22,10 +22,10 @@ namespace ATM
         private List<IVehicle> VehichlesExited = new List<IVehicle>();
 
 
-        public void Update(List<IVehicle> NewVehicles, List<IVehicle> OldVehicles)
+        public void Update(List<IVehicle> newVehicles, List<IVehicle> oldVehicles)
         {
-            this._newVehicles = NewVehicles;
-            this._oldVehicles = OldVehicles;
+            this._newVehicles = newVehicles;
+            this._oldVehicles = oldVehicles;
 
             FilterVehicles();
 

@@ -16,14 +16,14 @@ namespace ATM
         private int _altitudemax;
 
 
-        public void SetAirSpace(int xmin, int xmax, int ymin, int ymax, int altitudemin, int altitudemax)
+        public void SetAirSpace(int xMin, int xMax, int yMin, int yMax, int altitudeMin, int altitudeMax)
         {
-            _xmin = xmin;
-            _xmax = xmax;
-            _ymin = ymin;
-            _ymax = ymax;
-            _altitudemin = altitudemin;
-            _altitudemax = altitudemax;
+            _xmin = xMin;
+            _xmax = xMax;
+            _ymin = yMin;
+            _ymax = yMax;
+            _altitudemin = altitudeMin;
+            _altitudemax = altitudeMax;
         }
 
         public List<IVehicle> FilterVehicles(List<IVehicle> vehicles)

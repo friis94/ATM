@@ -15,9 +15,9 @@ namespace ATM
             _filePath = filePath;
         }
 
-        public void WriteLine(string str)
+        public void WriteLine(string stringData)
         {
-            System.IO.File.AppendAllText(_filePath, str + Environment.NewLine);
+            System.IO.File.AppendAllText(_filePath, stringData + Environment.NewLine);
         }
     }
 }
