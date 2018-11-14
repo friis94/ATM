@@ -12,7 +12,7 @@ namespace ATM.Integration.Test
     public class IntegrationStep6
     {
 
-        [TestMethod]
+        [Test]
         public void IntegrationTestNonColidingAirPlanesLoggedToConsole()
         {
             /*

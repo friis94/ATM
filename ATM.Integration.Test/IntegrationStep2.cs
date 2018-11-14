@@ -12,7 +12,7 @@ namespace ATM.Integration.Test
     public class IntegrationStep2
     {
 
-        [TestMethod]
+        [Test]
         public void IntegrationTestAirspaceFilter()
         {
             /*

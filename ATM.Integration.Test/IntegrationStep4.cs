@@ -12,7 +12,7 @@ namespace ATM.Integration.Test
     public class IntegrationStep4
     {
 
-        [TestMethod]
+        [Test]
         public void IntegrationTestSeparationDetectorReceivedVehicles()
         {
             /*
