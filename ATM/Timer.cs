@@ -13,15 +13,15 @@ namespace ATM
 
         private System.Timers.Timer timer;
 
-        private TrackEventArgs args = new TrackEventArgs();
+        private TrackEventArgs trackEventArgs = new TrackEventArgs();
 
         public Timer(int time, List<IVehicle> vehicles)
         {
-            args.tracks = vehicles;
+            trackEventArgs.tracks = vehicles;
 
             timer = new System.Timers.Timer();
             // Bind OnTimerEvent with an object of this, and set up the event
-            timer.Elapsed += (sender, e) => OnTimerEvent(sender, args);
+            timer.Elapsed += (sender, e) => OnTimerEvent(sender, trackEventArgs);
             timer.Interval = time;
             timer.AutoReset = false;
         }
