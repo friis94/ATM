@@ -8,11 +8,11 @@ using TransponderReceiver;
 namespace ATM.Integration.Test
 {
     [TestClass]
-    public class IntegrationStep3
+    public class IntegrationStep4
     {
 
         [TestMethod]
-        public void IntegrationTestCourseCalculator()
+        public void IntegrationTestSeparationDetectorReceivedVehicles()
         {
             /*
              * ARRANGE
@@ -20,15 +20,15 @@ namespace ATM.Integration.Test
 
             IAirspaceFilter airspaceFilter = new AirspaceFilter();
             ICourseCalculator courseCalculator = new CourseCalculator();
+            ITrackDetector trackDetector = new TrackDetector();
 
             // Fake transponder receiver to generate data
             FakeTransponderReceiver fakeTransponderReceiver = new FakeTransponderReceiver();
 
             // Stub to assert on
-            ITrackDetector trackDetector = Substitute.For<ITrackDetector>();
+            ISeparationDetector separationDetector = Substitute.For<ISeparationDetector>();
           
             // Needed to create ATMController
-            ISeparationDetector separationDetector = new SeparationDetector();
             IConsoleLogger consoleLogger = Substitute.For<IConsoleLogger>();
             IFileLogger fileLogger = Substitute.For<IFileLogger>();
 
@@ -43,7 +43,7 @@ namespace ATM.Integration.Test
             /*
              * Assert
              */
-            trackDetector.Received().LogTracks(Arg.Any<List<IVehicle>>(), Arg.Any<List<IVehicle>>());
+            separationDetector.Received().CalculateSeparations(Arg.Any<List<IVehicle>>());
 
         }
     }

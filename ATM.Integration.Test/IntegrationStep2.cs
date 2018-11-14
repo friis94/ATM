@@ -18,7 +18,6 @@ namespace ATM.Integration.Test
              * ARRANGE
              */
 
-            IDecoder decoder = new Decoder();
             IAirspaceFilter airspaceFilter = new AirspaceFilter();
 
             // Fake transponder receiver to generate data

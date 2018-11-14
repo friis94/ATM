@@ -8,42 +8,42 @@ using TransponderReceiver;
 namespace ATM.Integration.Test
 {
     [TestClass]
-    public class IntegrationStep3
+    public class IntegrationStep6
     {
 
         [TestMethod]
-        public void IntegrationTestCourseCalculator()
+        public void IntegrationTestNonColidingAirPlanesLoggedToConsole()
         {
             /*
              * ARRANGE
              */
 
+            IDecoder decoder = new Decoder();
             IAirspaceFilter airspaceFilter = new AirspaceFilter();
             ICourseCalculator courseCalculator = new CourseCalculator();
+            ITrackDetector trackDetector = new TrackDetector();
+            ISeparationDetector separationDetector = new SeparationDetector();
+            IConsoleLogger consoleLogger = new ConsoleLogger(Substitute.For<IConsoleWriter>());
 
             // Fake transponder receiver to generate data
             FakeTransponderReceiver fakeTransponderReceiver = new FakeTransponderReceiver();
 
             // Stub to assert on
-            ITrackDetector trackDetector = Substitute.For<ITrackDetector>();
-          
-            // Needed to create ATMController
-            ISeparationDetector separationDetector = new SeparationDetector();
-            IConsoleLogger consoleLogger = Substitute.For<IConsoleLogger>();
             IFileLogger fileLogger = Substitute.For<IFileLogger>();
 
+            // ATMController
             IController controller = new ATMController(fakeTransponderReceiver, fileLogger, consoleLogger,
                 separationDetector, trackDetector, airspaceFilter, courseCalculator);
 
             /*
              * ACT
              */
-            fakeTransponderReceiver.transpondNotCollidingAirplanes();
+            fakeTransponderReceiver.transpondCollidingAirplanes();
 
             /*
              * Assert
              */
-            trackDetector.Received().LogTracks(Arg.Any<List<IVehicle>>(), Arg.Any<List<IVehicle>>());
+            fileLogger.Received().Log(Arg.Any<ISeparation>());
 
         }
     }

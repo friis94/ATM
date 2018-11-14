@@ -18,8 +18,6 @@ namespace ATM.Integration.Test
              * ARRANGE
              */
 
-            IDecoder decoder = new Decoder();
-
             // Fake transponder receiver to generate data
             FakeTransponderReceiver fakeTransponderReceiver = new FakeTransponderReceiver();
 
