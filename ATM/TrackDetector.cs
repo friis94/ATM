@@ -22,7 +22,7 @@ namespace ATM
         private List<IVehicle> VehichlesExited = new List<IVehicle>();
 
 
-        public void LogTracks(List<IVehicle> NewVehicles, List<IVehicle> OldVehicles)
+        public void Update(List<IVehicle> NewVehicles, List<IVehicle> OldVehicles)
         {
             this._newVehicles = NewVehicles;
             this._oldVehicles = OldVehicles;

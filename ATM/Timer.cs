@@ -8,9 +8,7 @@ namespace ATM
 {
 
     public class Timer : ITimer
-    {
-        public int TimeRemaining { get; private set; }
-
+    { 
         public event EventHandler<TrackEventArgs> Expired;
 
         private System.Timers.Timer timer;

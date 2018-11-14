@@ -127,7 +127,7 @@ namespace ATM
             {
 
                 // Track detections to log
-                _trackDetector.LogTracks(newVehicles, vehicles);
+                _trackDetector.Update(newVehicles, vehicles);
 
                 // Calculate course
                 vehicles = _courseCalculator.CalculateCourse(newVehicles, vehicles);

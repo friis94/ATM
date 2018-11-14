@@ -20,7 +20,7 @@ namespace ATM
         event EventHandler<TrackEventArgs> ExitEventRemove;
         event EventHandler<TrackEventArgs> EnterEventRemove;
 
-        void LogTracks(List<IVehicle> NewVehicles, List<IVehicle> OldVehicles);
+        void Update(List<IVehicle> NewVehicles, List<IVehicle> OldVehicles);
 
     }
 }
