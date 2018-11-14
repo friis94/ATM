@@ -11,9 +11,9 @@ namespace ATM
     {
 
         public event EventHandler<TrackEventArgs> EnterEvent;
-        public event EventHandler EnterEventRemove;
+        public event EventHandler<TrackEventArgs> EnterEventRemove;
         public event EventHandler<TrackEventArgs> ExitEvent;
-        public event EventHandler ExitEventRemove;
+        public event EventHandler<TrackEventArgs> ExitEventRemove;
         private TrackEventArgs args = new TrackEventArgs();
         private List<IVehicle> _newVehicles;
         private List<IVehicle> _oldVehicles;
@@ -33,8 +33,8 @@ namespace ATM
             {
 
 
-                ITimer _exitTimer = new Timer(5000);
-                _exitTimer.Expired += new EventHandler(LogExitedVehichles);
+                ITimer _exitTimer = new Timer(5000, VehichlesExited);
+                _exitTimer.Expired += new EventHandler<TrackEventArgs>(LogExitedVehicles);
                 args.tracks = VehichlesExited;
                 ExitEvent?.Invoke(this, args);
                 //_exitTimer = new Timer(5000);
@@ -43,8 +43,8 @@ namespace ATM
             }
             if (VehichlesEntered.Count > 0)
             {
-                ITimer _enterTimer = new Timer(5000);
-                _enterTimer.Expired += new EventHandler(LogEnteredVehichles);
+                ITimer _enterTimer = new Timer(5000, VehichlesEntered);
+                _enterTimer.Expired += new EventHandler<TrackEventArgs>(LogEnteredVehicles);
                 args.tracks = VehichlesEntered;
                 EnterEvent?.Invoke(this, args);
                 //_enterTimer = new Timer(5000);
@@ -53,17 +53,17 @@ namespace ATM
 
         }
 
-        public void LogEnteredVehichles(object source, EventArgs timerArgs)
+        public void LogEnteredVehicles(object source, TrackEventArgs timerArgs)
         {
-            EnterEventRemove?.Invoke(this, EventArgs.Empty);
+
+            EnterEventRemove?.Invoke(this, timerArgs);
             
             
         }
 
-        public void LogExitedVehichles(object source, EventArgs timerArgs)
+        public void LogExitedVehicles(object source, TrackEventArgs timerArgs)
         {
-            ExitEventRemove?.Invoke(this, EventArgs.Empty);
-            
+            ExitEventRemove?.Invoke(this, timerArgs);
         }
 
 
@@ -102,12 +102,7 @@ namespace ATM
                 {
                     VehichlesExited.Add(_oldVehicles[i]);
                 }
-            }
-            
-
+            }          
         }
-
-
-
     }
 }

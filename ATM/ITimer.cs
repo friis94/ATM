@@ -8,7 +8,7 @@ namespace ATM
 {
     public interface ITimer
     {
-        event EventHandler Expired;
+        event EventHandler<TrackEventArgs> Expired;
 
         void Start();
         void Stop();
