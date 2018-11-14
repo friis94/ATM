@@ -46,8 +46,8 @@ namespace ATM.Unit.Test
         {
             IVehicle airplaneA = new Airplane();
             airplaneA.Tag = "ATV222";
-            airplaneA.Ycoordinate = 2000;
-            airplaneA.Xcoordinate = 1500;
+            airplaneA.YCoordinate = 2000;
+            airplaneA.XCoordinate = 1500;
             airplaneA.Timestamp = DateTime.Parse("2000/12/24 18:01:10");
 
             newVehicles.Add(airplaneA);
@@ -63,16 +63,16 @@ namespace ATM.Unit.Test
         {
             IVehicle airplaneA = new Airplane();
             airplaneA.Tag = "ATV222";
-            airplaneA.Ycoordinate = 2000;
-            airplaneA.Xcoordinate = 1500;
+            airplaneA.YCoordinate = 2000;
+            airplaneA.XCoordinate = 1500;
             airplaneA.Timestamp = DateTime.Parse("2000/12/24 18:01:10");
 
             newVehicles.Add(airplaneA);
 
             IVehicle airplaneB = new Airplane();
             airplaneB.Tag = "ATV222";
-            airplaneB.Ycoordinate = 5000;
-            airplaneB.Xcoordinate = 500;
+            airplaneB.YCoordinate = 5000;
+            airplaneB.XCoordinate = 500;
             airplaneB.Timestamp = DateTime.Parse("2000/12/24 18:00:0");
 
             oldVehicles.Add(airplaneB);
@@ -87,8 +87,8 @@ namespace ATM.Unit.Test
         {
             IVehicle airplaneB = new Airplane();
             airplaneB.Tag = "ATV222";
-            airplaneB.Ycoordinate = 5000;
-            airplaneB.Xcoordinate = 500;
+            airplaneB.YCoordinate = 5000;
+            airplaneB.XCoordinate = 500;
             airplaneB.Timestamp = DateTime.Parse("2000/12/24 18:00:0");
 
             oldVehicles.Add(airplaneB);
@@ -103,16 +103,16 @@ namespace ATM.Unit.Test
         {
             IVehicle airplaneA = new Airplane();
             airplaneA.Tag = "ATV222";
-            airplaneA.Ycoordinate = 2000;
-            airplaneA.Xcoordinate = 1500;
+            airplaneA.YCoordinate = 2000;
+            airplaneA.XCoordinate = 1500;
             airplaneA.Timestamp = DateTime.Parse("2000/12/24 18:01:10");
 
             newVehicles.Add(airplaneA);
 
             IVehicle airplaneB = new Airplane();
             airplaneB.Tag = "ATV222";
-            airplaneB.Ycoordinate = 5000;
-            airplaneB.Xcoordinate = 500;
+            airplaneB.YCoordinate = 5000;
+            airplaneB.XCoordinate = 500;
             airplaneB.Timestamp = DateTime.Parse("2000/12/24 18:00:0");
 
             oldVehicles.Add(airplaneB);
@@ -128,8 +128,8 @@ namespace ATM.Unit.Test
         {
             IVehicle airplaneB = new Airplane();
             airplaneB.Tag = "ATV222";
-            airplaneB.Ycoordinate = 5000;
-            airplaneB.Xcoordinate = 500;
+            airplaneB.YCoordinate = 5000;
+            airplaneB.XCoordinate = 500;
             airplaneB.Timestamp = DateTime.Parse("2000/12/24 18:00:0");
 
             newVehicles.Add(airplaneB);
@@ -146,8 +146,8 @@ namespace ATM.Unit.Test
         {
             IVehicle airplaneB = new Airplane();
             airplaneB.Tag = "ATV222";
-            airplaneB.Ycoordinate = 5000;
-            airplaneB.Xcoordinate = 500;
+            airplaneB.YCoordinate = 5000;
+            airplaneB.XCoordinate = 500;
             airplaneB.Timestamp = DateTime.Parse("2000/12/24 18:00:0");
 
             newVehicles.Add(airplaneB);
@@ -164,8 +164,8 @@ namespace ATM.Unit.Test
         {
             IVehicle airplaneB = new Airplane();
             airplaneB.Tag = "ATV222";
-            airplaneB.Ycoordinate = 5000;
-            airplaneB.Xcoordinate = 500;
+            airplaneB.YCoordinate = 5000;
+            airplaneB.XCoordinate = 500;
             airplaneB.Timestamp = DateTime.Parse("2000/12/24 18:00:0");
 
             oldVehicles.Add(airplaneB);
@@ -182,8 +182,8 @@ namespace ATM.Unit.Test
         {
             IVehicle airplaneB = new Airplane();
             airplaneB.Tag = "ATV222";
-            airplaneB.Ycoordinate = 5000;
-            airplaneB.Xcoordinate = 500;
+            airplaneB.YCoordinate = 5000;
+            airplaneB.XCoordinate = 500;
             airplaneB.Timestamp = DateTime.Parse("2000/12/24 18:00:0");
 
             oldVehicles.Add(airplaneB);

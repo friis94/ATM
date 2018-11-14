@@ -32,7 +32,7 @@ namespace ATM.Unit.Test
 
             ICourseCalculator courseCalculator = new CourseCalculator();
             
-            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
+            AtmController _uut = new AtmController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
             transponderReceiver.transpondCollidingAirplanes();
 
             fileLogger.Received().Log(Arg.Any<ISeparation>());
@@ -55,7 +55,7 @@ namespace ATM.Unit.Test
 
             ICourseCalculator courseCalculator = new CourseCalculator();
 
-            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
+            AtmController _uut = new AtmController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
             transponderReceiver.transpondNotCollidingAirplanes();
 
             fileLogger.DidNotReceive().Log(Arg.Any<ISeparation>());
@@ -78,7 +78,7 @@ namespace ATM.Unit.Test
 
             ICourseCalculator courseCalculator = new CourseCalculator();
 
-            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
+            AtmController _uut = new AtmController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
             transponderReceiver.transpondNotCollidingAirplanes();
 
             consoleLogger.Received().SetVehicles(Arg.Any<List<IVehicle>>());
@@ -101,7 +101,7 @@ namespace ATM.Unit.Test
 
             ICourseCalculator courseCalculator = new CourseCalculator();
 
-            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
+            AtmController _uut = new AtmController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
             transponderReceiver.transpondNoAirplanes();
 
             consoleLogger.DidNotReceive().SetVehicles(Arg.Any<List<IVehicle>>());
@@ -125,7 +125,7 @@ namespace ATM.Unit.Test
 
             ICourseCalculator courseCalculator = new CourseCalculator();
 
-            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
+            AtmController _uut = new AtmController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
             transponderReceiver.transpondNoAirplanes();
             transponderReceiver.transpondNotCollidingAirplanes();
 
@@ -150,7 +150,7 @@ namespace ATM.Unit.Test
 
             ICourseCalculator courseCalculator = new CourseCalculator();
 
-            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
+            AtmController _uut = new AtmController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
 
             transponderReceiver.transpondNotCollidingAirplanes();
             transponderReceiver.transpondNoAirplanes();

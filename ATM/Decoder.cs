@@ -24,7 +24,7 @@ namespace ATM
 
                 try
                 {
-                    vehicle.Xcoordinate = Int32.Parse(dataSplit[1]);
+                    vehicle.XCoordinate = Int32.Parse(dataSplit[1]);
                 }
                 catch (FormatException e)
                 {
@@ -34,7 +34,7 @@ namespace ATM
 
                 try
                 {
-                    vehicle.Ycoordinate = Int32.Parse(dataSplit[2]);
+                    vehicle.YCoordinate = Int32.Parse(dataSplit[2]);
                 }
                 catch (FormatException e)
                 {

@@ -33,7 +33,7 @@ namespace ATM.Integration.Test
             IFileLogger fileLogger = Substitute.For<IFileLogger>();
             ICourseCalculator courseCalculator = new CourseCalculator();
 
-            IController controller = new ATMController(fakeTransponderReceiver, fileLogger, consoleLogger,
+            IController controller = new AtmController(fakeTransponderReceiver, fileLogger, consoleLogger,
                 separationDetector, trackDetector, fakeAirspaceFilter, courseCalculator);
 
             /*

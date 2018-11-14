@@ -16,7 +16,7 @@ namespace ATM
         private int _altitudemax;
 
 
-        public void SetAirSpace(int xMin, int xMax, int yMin, int yMax, int altitudeMin, int altitudeMax)
+        public void SetAirspace(int xMin, int xMax, int yMin, int yMax, int altitudeMin, int altitudeMax)
         {
             _xmin = xMin;
             _xmax = xMax;
@@ -32,8 +32,8 @@ namespace ATM
             {
                 IVehicle vehicle = vehicles[i];
 
-                if (vehicle.Xcoordinate < _xmin || vehicle.Xcoordinate > _xmax ||
-                    vehicle.Ycoordinate < _ymin || vehicle.Ycoordinate > _ymax ||
+                if (vehicle.XCoordinate < _xmin || vehicle.XCoordinate > _xmax ||
+                    vehicle.YCoordinate < _ymin || vehicle.YCoordinate > _ymax ||
                     vehicle.Altitude < _altitudemin || vehicle.Altitude > _altitudemax)
                 {
                     vehicles.RemoveAt(i);

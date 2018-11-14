@@ -10,11 +10,11 @@ namespace ATM
     public class Airplane : IVehicle
     {
         public string Tag { get; set; }
-        public int Xcoordinate { get; set; }
-        public int Ycoordinate { get; set; }
+        public int XCoordinate { get; set; }
+        public int YCoordinate { get; set; }
         public int Altitude { get; set; }
-        public int velocity { get; set; }
-        public int course { get; set; }
+        public int Velocity { get; set; }
+        public int Course { get; set; }
         public DateTime Timestamp { get; set; }
     }
 }

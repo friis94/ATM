@@ -7,10 +7,10 @@ using TransponderReceiver;
 
 namespace ATM
 {
-    public class ATMController : IController
+    public class AtmController : IController
     {
 
-        public event EventHandler SeperationEventHandler;
+        public event EventHandler SeparationEventHandler;
         private ISeparationDetector _separationDetector;
         private ITransponderReceiver _transponderReceiver;
         private IDecoder _decoder;
@@ -23,16 +23,12 @@ namespace ATM
 
         private ITrackDetector _trackDetector;
 
-        private List<IVehicle> vehicles;
+        private List<IVehicle> _vehicles;
 
         private List<IVehicle> vehiclesEnter = new List<IVehicle>();
         private List<IVehicle> vehiclesExit = new List<IVehicle>();
 
-
-
-        
-
-        public ATMController(ITransponderReceiver receiver, IFileLogger fileLogger, IConsoleLogger consoleLogger, ISeparationDetector separationDetector, ITrackDetector trackDetector, IAirspaceFilter airspaceFilter, ICourseCalculator courseCalculator)
+        public AtmController(ITransponderReceiver receiver, IFileLogger fileLogger, IConsoleLogger consoleLogger, ISeparationDetector separationDetector, ITrackDetector trackDetector, IAirspaceFilter airspaceFilter, ICourseCalculator courseCalculator)
         {
             // Decoder
             _decoder = new Decoder();
@@ -42,10 +38,10 @@ namespace ATM
 
             // Airspace Filter
             _airspaceFilter = airspaceFilter;
-            _airspaceFilter.SetAirSpace(10000, 90000, 10000, 90000, 500, 20000);
+            _airspaceFilter.SetAirspace(10000, 90000, 10000, 90000, 500, 20000);
 
-            // Set vehicles list
-            vehicles = new List<IVehicle>();
+            // Set _vehicles list
+            _vehicles = new List<IVehicle>();
 
             _separationDetector = separationDetector;
             _separationDetector.SeparationEvent += Update;
@@ -83,14 +79,14 @@ namespace ATM
 
         public void LogEnterTracks(object source, TrackEventArgs args)
         {
-            //Log the entered vehicles
+            //Log the entered _vehicles
             vehiclesEnter.AddRange(args.tracks);
       
         }
 
         public void RemoveEnterTracks(object source, TrackEventArgs args)
         {
-            //Remove the entered vehicles
+            //Remove the entered _vehicles
             foreach (var vehicle in args.tracks)
             {
                 vehiclesEnter.Remove(vehicle);
@@ -99,13 +95,13 @@ namespace ATM
 
         public void LogExitTracks(object source, TrackEventArgs args)
         {
-            //Log the exited vehicles
+            //Log the exited _vehicles
             vehiclesExit.AddRange(args.tracks);
         }
 
         public void RemoveExitTracks(object source, TrackEventArgs args)
         {
-            //Remove the exited vehicles
+            //Remove the exited _vehicles
             foreach (var vehicle in args.tracks)
             {
                 vehiclesExit.Remove(vehicle);
@@ -121,26 +117,26 @@ namespace ATM
             newVehicles = _airspaceFilter.FilterVehicles(newVehicles);
 
             // Track detections to log
-            _trackDetector.Update(newVehicles, vehicles);
+            _trackDetector.Update(newVehicles, _vehicles);
 
             _consoleLogger.ClearConsole();
 
             if (newVehicles.Count > 0)
             {
-                // Calculate course
-                vehicles = _courseCalculator.CalculateCourse(newVehicles, vehicles);
+                // Calculate Course
+                _vehicles = _courseCalculator.CalculateCourse(newVehicles, _vehicles);
 
                 // Log to the console
-                _consoleLogger.SetVehicles(vehicles);
+                _consoleLogger.SetVehicles(_vehicles);
 
                 // Look for separations
-                _separationDetector.CalculateSeparations(vehicles);
+                _separationDetector.CalculateSeparations(_vehicles);
 
                 
             }
             else
             {
-                vehicles = newVehicles;
+                _vehicles = newVehicles;
             }
 
             if (vehiclesEnter.Count > 0)

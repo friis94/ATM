@@ -33,7 +33,7 @@ namespace ATM
             _writer.WriteLine(" ------------------------------- Airplanes in the airspace -------------------------------");
             foreach (var v in vehicles)
             {
-                _writer.WriteLine($"{v.Tag} , Coordinate(x, y): ({v.Xcoordinate}, {v.Ycoordinate}), Altitude: {v.Altitude}, Velocity: {v.velocity}, Compass course: {v.course}");
+                _writer.WriteLine($"{v.Tag} , Coordinate(x, y): ({v.XCoordinate}, {v.YCoordinate}), Altitude: {v.Altitude}, Velocity: {v.Velocity}, Compass Course: {v.Course}");
             }
 
             _writer.WriteLine("------------------------------------------------------------------------------------------");

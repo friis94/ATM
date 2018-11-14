@@ -21,7 +21,7 @@ namespace ATM.Unit.Test
 
             IVehicle airplaneA = new Airplane();
             airplaneA.Tag = "ATV222";
-            airplaneA.Xcoordinate = 1000;
+            airplaneA.XCoordinate = 1000;
             airplaneA.Timestamp = DateTime.Parse("2000/12/24 18:01:10");
 
             newVehicles.Add(airplaneA);
@@ -51,21 +51,21 @@ namespace ATM.Unit.Test
 
             IVehicle airplaneA = new Airplane();
             airplaneA.Tag = "ATV222";
-            airplaneA.Xcoordinate = 1000;
+            airplaneA.XCoordinate = 1000;
             airplaneA.Timestamp = DateTime.Parse("2000/12/24 18:01:10");
 
             newVehicles.Add(airplaneA);
             
             IVehicle airplaneB = new Airplane();
             airplaneB.Tag = "ATV222";
-            airplaneB.Xcoordinate = 5000;
+            airplaneB.XCoordinate = 5000;
             airplaneB.Timestamp = DateTime.Parse("2000/12/24 18:00:0");
 
             oldVehicles.Add(airplaneB);
 
             newVehicles = uut.CalculateCourse(newVehicles, oldVehicles);
 
-            Assert.AreEqual(newVehicles.First().velocity, 57);
+            Assert.AreEqual(newVehicles.First().Velocity, 57);
 
         }
 
@@ -80,21 +80,21 @@ namespace ATM.Unit.Test
 
             IVehicle airplaneA = new Airplane();
             airplaneA.Tag = "ATV222";
-            airplaneA.Ycoordinate = 2000;
+            airplaneA.YCoordinate = 2000;
             airplaneA.Timestamp = DateTime.Parse("2000/12/24 18:01:10");
 
             newVehicles.Add(airplaneA);
 
             IVehicle airplaneB = new Airplane();
             airplaneB.Tag = "ATV222";
-            airplaneB.Ycoordinate = 5000;
+            airplaneB.YCoordinate = 5000;
             airplaneB.Timestamp = DateTime.Parse("2000/12/24 18:00:0");
 
             oldVehicles.Add(airplaneB);
 
             newVehicles = uut.CalculateCourse(newVehicles, oldVehicles);
 
-            Assert.AreEqual(newVehicles.First().velocity, 42);
+            Assert.AreEqual(newVehicles.First().Velocity, 42);
         }
 
         [Test]
@@ -108,23 +108,23 @@ namespace ATM.Unit.Test
 
             IVehicle airplaneA = new Airplane();
             airplaneA.Tag = "ATV222";
-            airplaneA.Ycoordinate = 2000;
-            airplaneA.Xcoordinate = 1500;
+            airplaneA.YCoordinate = 2000;
+            airplaneA.XCoordinate = 1500;
             airplaneA.Timestamp = DateTime.Parse("2000/12/24 18:01:10");
 
             newVehicles.Add(airplaneA);
 
             IVehicle airplaneB = new Airplane();
             airplaneB.Tag = "ATV222";
-            airplaneB.Ycoordinate = 5000;
-            airplaneB.Xcoordinate = 500;
+            airplaneB.YCoordinate = 5000;
+            airplaneB.XCoordinate = 500;
             airplaneB.Timestamp = DateTime.Parse("2000/12/24 18:00:0");
 
             oldVehicles.Add(airplaneB);
 
             newVehicles = uut.CalculateCourse(newVehicles, oldVehicles);
 
-            Assert.AreEqual(newVehicles.First().velocity, 45);
+            Assert.AreEqual(newVehicles.First().Velocity, 45);
         }
 
         [Test]
@@ -138,23 +138,23 @@ namespace ATM.Unit.Test
 
             IVehicle airplaneA = new Airplane();
             airplaneA.Tag = "ATV222";
-            airplaneA.Ycoordinate = 2000;
-            airplaneA.Xcoordinate = 1500;
+            airplaneA.YCoordinate = 2000;
+            airplaneA.XCoordinate = 1500;
             airplaneA.Timestamp = DateTime.Parse("2000/12/24 18:01:10");
 
             newVehicles.Add(airplaneA);
 
             IVehicle airplaneB = new Airplane();
             airplaneB.Tag = "ATV222";
-            airplaneB.Ycoordinate = 5000;
-            airplaneB.Xcoordinate = 500;
+            airplaneB.YCoordinate = 5000;
+            airplaneB.XCoordinate = 500;
             airplaneB.Timestamp = DateTime.Parse("2000/12/24 18:00:0");
 
             oldVehicles.Add(airplaneB);
 
             newVehicles = uut.CalculateCourse(newVehicles, oldVehicles);
 
-            Assert.AreEqual(newVehicles.First().course, 289);
+            Assert.AreEqual(newVehicles.First().Course, 289);
         }
 
         [Test]
@@ -168,28 +168,28 @@ namespace ATM.Unit.Test
 
             IVehicle airplaneA = new Airplane();
             airplaneA.Tag = "ATV222";
-            airplaneA.Ycoordinate = 2000;
-            airplaneA.Xcoordinate = 1500;
+            airplaneA.YCoordinate = 2000;
+            airplaneA.XCoordinate = 1500;
             airplaneA.Timestamp = DateTime.Parse("2000/12/24 18:01:10");
 
             newVehicles.Add(airplaneA);
 
             IVehicle airplaneB = new Airplane();
             airplaneB.Tag = "ATV222";
-            airplaneB.Ycoordinate = 5000;
-            airplaneB.Xcoordinate = 500;
+            airplaneB.YCoordinate = 5000;
+            airplaneB.XCoordinate = 500;
             airplaneB.Timestamp = DateTime.Parse("2000/12/24 18:00:0");
 
             IVehicle airplaneC = new Airplane();
             airplaneB.Tag = "AAS222";
-            airplaneB.Ycoordinate = 5006;
-            airplaneB.Xcoordinate = 500;
+            airplaneB.YCoordinate = 5006;
+            airplaneB.XCoordinate = 500;
             airplaneB.Timestamp = DateTime.Parse("2000/12/24 18:00:0");
 
             IVehicle airplaneD = new Airplane();
             airplaneB.Tag = "ATX222";
-            airplaneB.Ycoordinate = 5000;
-            airplaneB.Xcoordinate = 9000;
+            airplaneB.YCoordinate = 5000;
+            airplaneB.XCoordinate = 9000;
             airplaneB.Timestamp = DateTime.Parse("2000/12/24 18:00:0");
 
             oldVehicles.Add(airplaneD);

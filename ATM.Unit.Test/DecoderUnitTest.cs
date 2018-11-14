@@ -60,7 +60,7 @@ namespace ATM.Unit.Test
 
             var vehicle = ve.First();
 
-            Assert.AreEqual(vehicle.Xcoordinate, 39045);
+            Assert.AreEqual(vehicle.XCoordinate, 39045);
         }
 
         [Test]
@@ -89,7 +89,7 @@ namespace ATM.Unit.Test
 
             var vehicle = ve.First();
 
-            Assert.AreEqual(vehicle.Ycoordinate, 12932);
+            Assert.AreEqual(vehicle.YCoordinate, 12932);
         }
 
         [Test]

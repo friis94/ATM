@@ -8,7 +8,7 @@ namespace ATM
 {
     public interface IAirspaceFilter
     {
-        void SetAirSpace(int xMin, int xMax, int yMin, int yMax, int altitudeMin, int altitudeMax);
+        void SetAirspace(int xMin, int xMax, int yMin, int yMax, int altitudeMin, int altitudeMax);
         List<IVehicle> FilterVehicles(List<IVehicle> vehicles);
     }
 }

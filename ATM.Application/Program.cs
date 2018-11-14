@@ -31,7 +31,7 @@ namespace ATM.Application
 
             ICourseCalculator courseCalculator = new CourseCalculator();
 
-            IController controller = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
+            IController controller = new AtmController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
             
             
             Console.ReadKey();

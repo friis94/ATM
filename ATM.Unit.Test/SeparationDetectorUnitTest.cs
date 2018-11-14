@@ -32,14 +32,14 @@ namespace ATM.Unit.Test
             //Adding two colliding airplanes
             Airplane vehicleA = new Airplane();
             vehicleA.Altitude = 100;
-            vehicleA.Xcoordinate = 100;
-            vehicleA.Ycoordinate = 100;
+            vehicleA.XCoordinate = 100;
+            vehicleA.YCoordinate = 100;
             vehicleA.Tag = "tag1";
 
             Airplane vehicleB = new Airplane();
             vehicleB.Altitude = 99;
-            vehicleB.Xcoordinate = 99;
-            vehicleB.Ycoordinate = 99;
+            vehicleB.XCoordinate = 99;
+            vehicleB.YCoordinate = 99;
             vehicleB.Tag = "tag2";
 
             _vehicles.Add(vehicleA);
@@ -59,13 +59,13 @@ namespace ATM.Unit.Test
             //Adding two colliding airplanes
             Airplane vehicleA = new Airplane();
             vehicleA.Altitude = 100;
-            vehicleA.Xcoordinate = 100;
-            vehicleA.Ycoordinate = 100;
+            vehicleA.XCoordinate = 100;
+            vehicleA.YCoordinate = 100;
 
             Airplane vehicleB = new Airplane();
             vehicleB.Altitude = 600;
-            vehicleB.Xcoordinate = 99;
-            vehicleB.Ycoordinate = 99;
+            vehicleB.XCoordinate = 99;
+            vehicleB.YCoordinate = 99;
 
             _vehicles.Add(vehicleA);
             _vehicles.Add(vehicleB);
@@ -91,8 +91,8 @@ namespace ATM.Unit.Test
             //Act - Add one vehicle
             Airplane vehicleA = new Airplane();
             vehicleA.Altitude = 100;
-            vehicleA.Xcoordinate = 100;
-            vehicleA.Ycoordinate = 100;
+            vehicleA.XCoordinate = 100;
+            vehicleA.YCoordinate = 100;
 
             _vehicles.Add(vehicleA);
             
@@ -106,14 +106,14 @@ namespace ATM.Unit.Test
             // Arrange
             Airplane vehicleA = new Airplane();
             vehicleA.Altitude = 100;
-            vehicleA.Xcoordinate = 100;
-            vehicleA.Ycoordinate = 100;
+            vehicleA.XCoordinate = 100;
+            vehicleA.YCoordinate = 100;
             vehicleA.Tag = "tag1";
 
             Airplane vehicleB = new Airplane();
             vehicleB.Altitude = 400;
-            vehicleB.Xcoordinate = 100;
-            vehicleB.Ycoordinate = 100;
+            vehicleB.XCoordinate = 100;
+            vehicleB.YCoordinate = 100;
             vehicleB.Tag = "tag2";
 
             _vehicles.Add(vehicleA);
@@ -133,14 +133,14 @@ namespace ATM.Unit.Test
             //Arrange
             Airplane vehicleA = new Airplane();
             vehicleA.Altitude = 100;
-            vehicleA.Xcoordinate = 100;
-            vehicleA.Ycoordinate = 100;
+            vehicleA.XCoordinate = 100;
+            vehicleA.YCoordinate = 100;
             vehicleA.Tag = "tag1";
 
             Airplane vehicleB = new Airplane();
             vehicleB.Altitude = 399;
-            vehicleB.Xcoordinate = 100;
-            vehicleB.Ycoordinate = 100;
+            vehicleB.XCoordinate = 100;
+            vehicleB.YCoordinate = 100;
             vehicleB.Tag = "tag2";
 
             _vehicles.Add(vehicleA);
@@ -160,14 +160,14 @@ namespace ATM.Unit.Test
             //Arrange
             Airplane vehicleA = new Airplane();
             vehicleA.Altitude = 100;
-            vehicleA.Xcoordinate = 100;
-            vehicleA.Ycoordinate = 5099;
+            vehicleA.XCoordinate = 100;
+            vehicleA.YCoordinate = 5099;
             vehicleA.Tag = "tag1";
 
             Airplane vehicleB = new Airplane();
             vehicleB.Altitude = 100;
-            vehicleB.Xcoordinate = 100;
-            vehicleB.Ycoordinate = 100;
+            vehicleB.XCoordinate = 100;
+            vehicleB.YCoordinate = 100;
             vehicleB.Tag = "tag2";
             _vehicles.Add(vehicleA);
             _vehicles.Add(vehicleB);
@@ -186,14 +186,14 @@ namespace ATM.Unit.Test
             //Arrange
             Airplane vehicleA = new Airplane();
             vehicleA.Altitude = 100;
-            vehicleA.Xcoordinate = 100;
-            vehicleA.Ycoordinate = 100;
+            vehicleA.XCoordinate = 100;
+            vehicleA.YCoordinate = 100;
             vehicleA.Tag = "tag1";
 
             Airplane vehicleB = new Airplane();
             vehicleB.Altitude = 100;
-            vehicleB.Xcoordinate = 100;
-            vehicleB.Ycoordinate = 5100;
+            vehicleB.XCoordinate = 100;
+            vehicleB.YCoordinate = 5100;
             vehicleB.Tag = "tag2";
 
             _vehicles.Add(vehicleA);

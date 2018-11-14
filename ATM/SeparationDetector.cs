@@ -39,8 +39,8 @@ namespace ATM
                 {
 
                     IVehicle vehicleB = vehicles[counter];
-                    double xDistance = (double)vehicleA.Xcoordinate - (double)vehicleB.Xcoordinate;
-                    double yDistance = (double)vehicleA.Ycoordinate - (double)vehicleB.Ycoordinate;
+                    double xDistance = (double)vehicleA.XCoordinate - (double)vehicleB.XCoordinate;
+                    double yDistance = (double)vehicleA.YCoordinate - (double)vehicleB.YCoordinate;
 
 
                     double distanceBetweenVehicles = Math.Sqrt(xDistance*xDistance + yDistance*yDistance);

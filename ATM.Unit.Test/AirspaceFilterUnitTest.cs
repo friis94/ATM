@@ -16,7 +16,7 @@ namespace ATM.Unit.Test
         public void Init()
         {
             uut = new AirspaceFilter();
-            uut.SetAirSpace(10000, 90000, 10000, 90000, 500, 20000);
+            uut.SetAirspace(10000, 90000, 10000, 90000, 500, 20000);
         }
 
         [Test]
@@ -49,8 +49,8 @@ namespace ATM.Unit.Test
             List<IVehicle> vehicles = new List<IVehicle>();
 
             IVehicle vehicle = new Airplane();
-            vehicle.Xcoordinate = x;
-            vehicle.Ycoordinate = y;
+            vehicle.XCoordinate = x;
+            vehicle.YCoordinate = y;
             vehicle.Altitude = altitude;
             vehicles.Add(vehicle);
 

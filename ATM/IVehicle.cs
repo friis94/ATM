@@ -9,11 +9,11 @@ namespace ATM
     public interface IVehicle
     {
         string Tag { get; set; }
-        int Xcoordinate { get; set; }
-        int Ycoordinate { get; set; }
+        int XCoordinate { get; set; }
+        int YCoordinate { get; set; }
         int Altitude { get; set; }
-        int velocity { get; set; }
-        int course { get; set; }
+        int Velocity { get; set; }
+        int Course { get; set; }
 
         DateTime Timestamp { get; set; }
 

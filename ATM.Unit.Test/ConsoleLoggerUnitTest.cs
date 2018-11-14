@@ -80,8 +80,8 @@ namespace ATM.Unit.Test
             Received.InOrder(() =>
             {
                 writer.WriteLine(" ------------------------------- Airplanes in the airspace -------------------------------");
-                writer.WriteLine($"{airplaneA.Tag} , Coordinate(x, y): ({airplaneA.Xcoordinate}, {airplaneA.Ycoordinate}), Altitude: {airplaneA.Altitude}, Velocity: {airplaneA.velocity}, Compass course: {airplaneA.course}");
-                writer.WriteLine($"{airplaneB.Tag} , Coordinate(x, y): ({airplaneB.Xcoordinate}, {airplaneB.Ycoordinate}), Altitude: {airplaneB.Altitude}, Velocity: {airplaneB.velocity}, Compass course: {airplaneB.course}");
+                writer.WriteLine($"{airplaneA.Tag} , Coordinate(x, y): ({airplaneA.XCoordinate}, {airplaneA.YCoordinate}), Altitude: {airplaneA.Altitude}, Velocity: {airplaneA.Velocity}, Compass Course: {airplaneA.Course}");
+                writer.WriteLine($"{airplaneB.Tag} , Coordinate(x, y): ({airplaneB.XCoordinate}, {airplaneB.YCoordinate}), Altitude: {airplaneB.Altitude}, Velocity: {airplaneB.Velocity}, Compass Course: {airplaneB.Course}");
                 writer.WriteLine("------------------------------------------------------------------------------------------");
             });
         }
