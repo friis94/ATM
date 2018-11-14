@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using ATM.Unit.Test;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
+using NUnit.Framework;
 using TransponderReceiver;
 
 namespace ATM.Integration.Test
 {
-    [TestClass]
+    [TestFixture]
     public class IntegrationStep6
     {
 
