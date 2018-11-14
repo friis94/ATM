@@ -15,6 +15,11 @@ namespace ATM
        
         public List<IVehicle> Decode(List<string> transponderData)
         {
+            if(transponderData == null)
+            {
+                throw new ArgumentNullException("transponderData");
+            }
+
             List<IVehicle> vehicleList = new List<IVehicle>();
 
             foreach (var data in transponderData)

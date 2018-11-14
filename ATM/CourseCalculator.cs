@@ -11,6 +11,11 @@ namespace ATM
         // Calculates the Course of vehicles in a list, compared to their previous 'old' location.
         public List<IVehicle> CalculateCourse(List<IVehicle> newVehicles, List<IVehicle> oldVehicles)
         {
+            if (newVehicles == null || oldVehicles == null)
+            {
+                throw new ArgumentNullException("vehicles");
+            }
+
             // Loop through all vehicles and look for them in the list of oldVehicle positions
             foreach (var newVehicle in newVehicles)
             {

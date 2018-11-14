@@ -140,6 +140,12 @@ namespace ATM
 
         public void NewTransponderData(object source, RawTransponderDataEventArgs data)
         {
+
+            if (data == null)
+            {
+                throw new ArgumentNullException("data");
+            }
+
             // Decode received transponder data
             List<IVehicle> newVehicles = _decoder.Decode(data.TransponderData);
 

@@ -18,6 +18,11 @@ namespace ATM
         
         public void SetSeparations(List<ISeparation> separations)
         {
+            if (separations == null)
+            {
+                throw new ArgumentNullException("separations");
+            }
+
             _writer.WriteLine(" ------------------------------------ Separation Event -----------------------------------");
             foreach (var s in separations)
             {
@@ -30,6 +35,11 @@ namespace ATM
 
         public void SetVehicles(List<IVehicle> vehicles)
         {
+            if (vehicles == null)
+            {
+                throw new ArgumentNullException("vehicles");
+            }
+
             _writer.WriteLine(" ------------------------------- Airplanes in the airspace -------------------------------");
             foreach (var v in vehicles)
             {
@@ -40,8 +50,13 @@ namespace ATM
         }
 
         public void SetEnterTracks(List<IVehicle> vehicles)
-        {   
-                _writer.WriteLine(" ------------------------------- Airplanes Entered airspace -------------------------------");
+        {
+            if (vehicles == null)
+            {
+                throw new ArgumentNullException("vehicles");
+            }
+
+            _writer.WriteLine(" ------------------------------- Airplanes Entered airspace -------------------------------");
                 foreach (var v in vehicles)
                 {
                     string timeStampString = v.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
@@ -52,6 +67,11 @@ namespace ATM
 
         public void SetExitTracks(List<IVehicle> vehicles)
         {
+            if (vehicles == null)
+            {
+                throw new ArgumentNullException("vehicles");
+            }
+
             if (vehicles.Count > 0)
             {
                 _writer.WriteLine(" ------------------------------- Airplanes Entered airspace -------------------------------");

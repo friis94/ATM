@@ -21,6 +21,10 @@ namespace ATM
 
         public void CalculateSeparations(List<IVehicle> vehicles)
         {
+            if (vehicles == null)
+            {
+                throw new ArgumentNullException("vehicles");
+            }
 
             Separations = new List<ISeparation>();
 
