@@ -1,8 +1,9 @@
 <Dictionary>
      <Words>
         <Recognized>
-            <Word>"x"</Word>
-            <Word>"y"</Word>
+            <Word>x</Word>
+            <Word>y</Word>
+             <Word>Atm</Word>
         </Recognized>
     </Words>
 </Dictionary>
