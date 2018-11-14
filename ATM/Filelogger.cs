@@ -21,6 +21,11 @@ namespace ATM
         // Log a separation event
         public void Log(ISeparation separation)
         {
+            if (separation == null)
+            {
+                throw new ArgumentNullException("separation");
+            }
+
             // Format date and time
             var dateTimeString = separation.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
 
