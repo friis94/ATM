@@ -107,5 +107,57 @@ namespace ATM.Unit.Test
             consoleLogger.DidNotReceive().SetVehicles(Arg.Any<List<IVehicle>>());
         }
 
+
+        [Test]
+        public void ATMControllerTest_LogEnterTracks()
+        {
+            FakeTransponderReceiver transponderReceiver = new FakeTransponderReceiver();
+
+            IFileLogger fileLogger = Substitute.For<IFileLogger>();
+
+            IConsoleLogger consoleLogger = Substitute.For<IConsoleLogger>();
+
+            ISeparationDetector separationDetector = new SeparationDetector();
+
+            ITrackDetector trackDetector = new TrackDetector();
+
+            IAirspaceFilter airspaceFilter = new AirspaceFilter();
+
+            ICourseCalculator courseCalculator = new CourseCalculator();
+
+            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
+            transponderReceiver.transpondNoAirplanes();
+            transponderReceiver.transpondNotCollidingAirplanes();
+
+            consoleLogger.Received().SetEnterTracks(Arg.Any<List<IVehicle>>());
+        }
+
+
+        [Test]
+        public void ATMControllerTest_LogExitTracks()
+        {
+            FakeTransponderReceiver transponderReceiver = new FakeTransponderReceiver();
+
+            IFileLogger fileLogger = Substitute.For<IFileLogger>();
+
+            IConsoleLogger consoleLogger = Substitute.For<IConsoleLogger>();
+
+            ISeparationDetector separationDetector = new SeparationDetector();
+
+            ITrackDetector trackDetector = new TrackDetector();
+
+            IAirspaceFilter airspaceFilter = new AirspaceFilter();
+
+            ICourseCalculator courseCalculator = new CourseCalculator();
+
+            ATMController _uut = new ATMController(transponderReceiver, fileLogger, consoleLogger, separationDetector, trackDetector, airspaceFilter, courseCalculator);
+
+            transponderReceiver.transpondNotCollidingAirplanes();
+            transponderReceiver.transpondNoAirplanes();
+
+            consoleLogger.Received().SetExitTracks(Arg.Any<List<IVehicle>>());
+        }
+
+
     }
 }

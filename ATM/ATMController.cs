@@ -121,23 +121,18 @@ namespace ATM
             // Filter the newVehicles 
             newVehicles = _airspaceFilter.FilterVehicles(newVehicles);
 
+            // Track detections to log
+            _trackDetector.Update(newVehicles, vehicles);
+
             _consoleLogger.ClearConsole();
 
             if (newVehicles.Count > 0)
             {
-
-                // Track detections to log
-                _trackDetector.Update(newVehicles, vehicles);
-
                 // Calculate course
                 vehicles = _courseCalculator.CalculateCourse(newVehicles, vehicles);
 
                 // Log to the console
                 _consoleLogger.SetVehicles(vehicles);
-
-                _consoleLogger.SetEnterTracks(vehiclesEnter);
-
-                _consoleLogger.SetExitTracks(vehiclesExit);
 
                 // Look for separations
                 _separationDetector.CalculateSeparations(vehicles);
@@ -147,6 +142,16 @@ namespace ATM
             else
             {
                 vehicles = newVehicles;
+            }
+
+            if (vehiclesEnter.Count > 0)
+            {
+                _consoleLogger.SetEnterTracks(vehiclesEnter);
+            }
+
+            if (vehiclesExit.Count > 0)
+            {
+                _consoleLogger.SetExitTracks(vehiclesExit);
             }
         }
 
