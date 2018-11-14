@@ -21,7 +21,7 @@ namespace ATM
             _writer.WriteLine(" ------------------------------------ Separation Event -----------------------------------");
             foreach (var s in separations)
             {
-                string timeStampString = s.TimeStamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                string timeStampString = s.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
                 _writer.WriteLine($"Separation between {s.VehicleA.Tag} and {s.VehicleB.Tag} @ {timeStampString}");
             }
 

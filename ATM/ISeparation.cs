@@ -11,6 +11,6 @@ namespace ATM
     {
         IVehicle VehicleA { get; set; }
         IVehicle VehicleB { get; set; }
-        DateTime TimeStamp { get; set; }
+        DateTime Timestamp { get; set; }
     }
 }
