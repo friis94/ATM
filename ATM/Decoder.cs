@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -24,7 +25,7 @@ namespace ATM
 
                 try
                 {
-                    vehicle.XCoordinate = Int32.Parse(dataSplit[1]);
+                    vehicle.XCoordinate = Int32.Parse(dataSplit[1], CultureInfo.InvariantCulture);
                 }
                 catch (FormatException e)
                 {
@@ -34,7 +35,7 @@ namespace ATM
 
                 try
                 {
-                    vehicle.YCoordinate = Int32.Parse(dataSplit[2]);
+                    vehicle.YCoordinate = Int32.Parse(dataSplit[2], CultureInfo.InvariantCulture);
                 }
                 catch (FormatException e)
                 {
@@ -44,7 +45,7 @@ namespace ATM
 
                 try
                 {
-                    vehicle.Altitude = Int32.Parse(dataSplit[3]);
+                    vehicle.Altitude = Int32.Parse(dataSplit[3], CultureInfo.InvariantCulture);
                 }
                 catch (FormatException e)
                 {
