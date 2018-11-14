@@ -11,7 +11,6 @@ namespace ATM
         public event EventHandler<SeparationChangedEventArgs> SeparationEvent;
         private SeparationChangedEventArgs args;
         public List<ISeparation> Separations;
-        private List<String> tags;
 
 
         public SeparationDetector()
