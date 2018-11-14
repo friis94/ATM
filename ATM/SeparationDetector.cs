@@ -59,7 +59,7 @@ namespace ATM
             
             if (Separations.Count > 0)
             {
-                args.separations = Separations;
+                args.Separations = Separations;
                 HandleEvent(args);
             }
 

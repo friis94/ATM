@@ -17,7 +17,7 @@ namespace ATM
 
         public Timer(int time, List<IVehicle> vehicles)
         {
-            trackEventArgs.tracks = vehicles;
+            trackEventArgs.Tracks = vehicles;
 
             timer = new System.Timers.Timer();
             // Bind OnTimerEvent with an object of this, and set up the event

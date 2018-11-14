@@ -10,7 +10,7 @@ namespace ATM
 
     public class TrackEventArgs : EventArgs
     {
-        public List<IVehicle> tracks { get; set; }
+        public List<IVehicle> Tracks { get; set; }
     }
 
     public interface ITrackDetector

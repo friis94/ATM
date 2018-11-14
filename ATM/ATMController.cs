@@ -70,8 +70,8 @@ namespace ATM
 
         public void Update(object source, SeparationChangedEventArgs args)
         {
-            _consoleLogger.SetSeparations(args.separations);
-            foreach (var separation in args.separations)
+            _consoleLogger.SetSeparations(args.Separations);
+            foreach (var separation in args.Separations)
             {
                 _fileLogger.Log(separation);
             }
@@ -80,14 +80,14 @@ namespace ATM
         public void LogEnterTracks(object source, TrackEventArgs args)
         {
             //Log the entered _vehicles
-            vehiclesEnter.AddRange(args.tracks);
+            vehiclesEnter.AddRange(args.Tracks);
       
         }
 
         public void RemoveEnterTracks(object source, TrackEventArgs args)
         {
             //Remove the entered _vehicles
-            foreach (var vehicle in args.tracks)
+            foreach (var vehicle in args.Tracks)
             {
                 vehiclesEnter.Remove(vehicle);
             }
@@ -96,13 +96,13 @@ namespace ATM
         public void LogExitTracks(object source, TrackEventArgs args)
         {
             //Log the exited _vehicles
-            vehiclesExit.AddRange(args.tracks);
+            vehiclesExit.AddRange(args.Tracks);
         }
 
         public void RemoveExitTracks(object source, TrackEventArgs args)
         {
             //Remove the exited _vehicles
-            foreach (var vehicle in args.tracks)
+            foreach (var vehicle in args.Tracks)
             {
                 vehiclesExit.Remove(vehicle);
             }
@@ -129,7 +129,7 @@ namespace ATM
                 // Log to the console
                 _consoleLogger.SetVehicles(_vehicles);
 
-                // Look for separations
+                // Look for Separations
                 _separationDetector.CalculateSeparations(_vehicles);
 
                 

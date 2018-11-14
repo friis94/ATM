@@ -33,7 +33,7 @@ namespace ATM
             {
                 ITimer _exitTimer = new Timer(5000, VehichlesExited);
                 _exitTimer.Expired += new EventHandler<TrackEventArgs>(LogExitedVehicles);
-                args.tracks = VehichlesExited;
+                args.Tracks = VehichlesExited;
                 ExitEvent?.Invoke(this, args);
                 _exitTimer.Start();
 
@@ -43,7 +43,7 @@ namespace ATM
             {
                 ITimer _enterTimer = new Timer(5000, VehichlesEntered);
                 _enterTimer.Expired += new EventHandler<TrackEventArgs>(LogEnteredVehicles);
-                args.tracks = VehichlesEntered;
+                args.Tracks = VehichlesEntered;
                 EnterEvent?.Invoke(this, args);
                 _enterTimer.Start();
             }

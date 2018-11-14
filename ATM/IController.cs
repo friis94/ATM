@@ -10,7 +10,7 @@ namespace ATM
     {
 
         //List<IVehicle> vehicles { get; set; }
-        //List<ISeparation> separations { get; set; }
+        //List<ISeparation> Separations { get; set; }
 
         void Update(object source, SeparationChangedEventArgs args);
 

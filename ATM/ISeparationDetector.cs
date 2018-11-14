@@ -9,7 +9,7 @@ namespace ATM
 {
     public class SeparationChangedEventArgs : EventArgs
     {
-        public List<ISeparation> separations { get; set; }
+        public List<ISeparation> Separations { get; set; }
     }
 
     public interface ISeparationDetector

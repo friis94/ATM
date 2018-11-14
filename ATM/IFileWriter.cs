@@ -8,6 +8,6 @@ namespace ATM
 {
     public interface IFileWriter
     {
-        void WriteLine(string stringData);
+        void WriteLine(string value);
     }
 }
