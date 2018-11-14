@@ -12,7 +12,7 @@ namespace ATM.Integration.Test
     public class IntegrationStep1
     {
 
-        [TestMethod]
+        [Test]
         public void IntegrationTestDecoder()
         {
             /*
