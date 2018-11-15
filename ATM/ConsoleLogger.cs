@@ -74,7 +74,7 @@ namespace ATM
 
             if (vehicles.Count > 0)
             {
-                _writer.WriteLine(" ------------------------------- Airplanes Entered airspace -------------------------------");
+                _writer.WriteLine(" ------------------------------- Airplanes Exited airspace -------------------------------");
                 foreach (var v in vehicles)
                 {
                     string timeStampString =
