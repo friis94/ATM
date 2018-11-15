@@ -145,7 +145,7 @@ namespace ATM.Unit.Test
 
             Received.InOrder(() =>
             {
-                writer.WriteLine(" ------------------------------- Airplanes Entered airspace -------------------------------");
+                writer.WriteLine(" ------------------------------- Airplanes Exited airspace -------------------------------");
                 writer.WriteLine($"{airplaneA.Tag} at time @ 2000-12-24 18:00:10.000");
                 writer.WriteLine($"{airplaneB.Tag} at time @ 2000-12-24 18:00:10.000");
                 writer.WriteLine("------------------------------------------------------------------------------------------");
